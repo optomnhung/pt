@@ -332,11 +332,23 @@
     @media (max-width: 768px) {
       body { padding: 10px 5px; }
       .app-container { padding: 15px 10px; border-radius: 16px; }
-      .main-layout { display: grid; grid-template-columns: 1fr; gap: 15px; }
-      .right-side { order: 2; width: 100%; }
-      .strip-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-      .filter-card { order: 3; }
+      .brand-title { font-size: 26px; }
+      .brand-subtitle { font-size: 12px; margin-bottom: 15px; }
+      .toolbar-box { gap: 8px; justify-content: space-between; }
+      .btn-select-frame { margin-left: 0; width: 100%; justify-content: center; margin-top: 5px; }
+      .main-layout { display: grid; grid-template-columns: 1fr;gap: 15px; }
+      .camera-container,.controls-row, .extra-tools { order: 1; }
+      .right-side {  order: 2;  width: 100%; }
+      .strip-container { display: grid;  grid-template-columns: repeat(4, 1fr); gap: 8px; }
+      .filter-card { order: 3;}
+      .left-side { display: contents; }
+      .controls-row { gap: 12px; }
+      .btn-circle { width: 48px; height: 48px; font-size: 18px; }
+      .action-btn.auto .btn-circle { width: 60px; height: 60px; font-size: 22px; }
       .step2-layout { flex-direction: column; align-items: center; }
+      .preview-column { width: 100%; max-width: 280px; }
+      .gallery-column { width: 100%; }
+      .frame-grid-container { height: 400px; }
     }
   </style>
 </head>
@@ -473,15 +485,13 @@
   <!-- Thanh tìm kiếm -->
   <div class="search-box">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <input type="text" class="search-input" placeholder="Tìm tên khung (ToyStory, HUCE, AOF...)..." oninput="filterFrames(this.value)">
+    <input type="text" class="search-input" placeholder="Tìm tên khung ..." oninput="filterFrames(this.value)">
   </div>
 
   <!-- Tag phân loại nhanh -->
   <div class="category-tags">
     <button class="cat-btn active" onclick="filterCategory('all', this)">Tất Cả</button>
     <button class="cat-btn" onclick="filterCategory('cute', this)">Cute / Yêu Thích</button>
-    <button class="cat-btn" onclick="filterCategory('school', this)">Thẻ Sinh Viên</button>
-    <button class="cat-btn" onclick="filterCategory('camera', this)">Máy Ảnh Retro</button>
   </div>
 
   <!-- Danh sách lưới khung ảnh -->
@@ -1213,6 +1223,37 @@ frame8: {
       };
     });
   }
+
+  // Thay thế đoạn code "Khởi động Camera" cũ bằng đoạn này:
+async function initCamera() {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    statusPill.innerText = 'Trình duyệt không hỗ trợ Camera/HTTPS';
+    return;
+  }
+  
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { 
+        width: { ideal: 1280 }, 
+        height: { ideal: 960 }, 
+        facingMode: "user" // Hoặc "environment" nếu muốn camera sau
+      }, 
+      audio: false 
+    });
+    video.srcObject = stream;
+    statusPill.innerText = 'Đã Chụp 0/4';
+  } catch (err) {
+    console.error("Lỗi Camera: ", err);
+    if (err.name === 'NotAllowedError') {
+      statusPill.innerText = 'Bạn chưa cấp quyền Camera!';
+    } else {
+      statusPill.innerText = 'Lỗi kết nối Camera (Cần HTTPS/Localhost)';
+    }
+  }
+}
+
+// Gọi hàm chạy
+initCamera();
 </script>
 
 </body>
